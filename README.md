@@ -20,7 +20,11 @@ Subslify is a subscription management app that helps users track and organize th
 ## Technologies
 
 Project is created with:
-// TODO: add technologies
+
+<!--
+TODO: add technologies
+-->
+
 
 - React
 - webpack
@@ -30,7 +34,9 @@ Project is created with:
 
 ## Setup
 
-// TODO: add setup
+<!--
+TODO: add setup instructions
+-->
 
 To run this project, install it locally using npm:
 
