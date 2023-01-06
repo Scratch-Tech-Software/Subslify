@@ -1,0 +1,28 @@
+{
+  "minify": false,
+  "jsc": {
+      "parser": {
+          "syntax": "ecmascript",
+          "jsx": true,
+          "dynamicImport": true,
+          "decorators": true
+      },
+      "transform": {
+          "react": {
+              "development": true,
+              "refresh": true,
+              "runtime": "automatic"
+          },
+          "optimizer": {
+              "simplify": true,
+              "globals": {
+                  "vars": {
+                      "__DEBUG__": "true"
+                  }
+              }
+          }
+      },
+      "externalHelpers": true,
+      "loose": true
+  }
+}
