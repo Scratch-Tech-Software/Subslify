@@ -1,0 +1,44 @@
+{
+  "name": "subslify-server",
+  "version": "0.1.0",
+  "description": "_Subscription overload? Not anymore! With Subslify, you can easily track, organize, and understand your monthly subscriptions. No more surprise charges or hidden fees - Subslify has you covered. Try it now and take control of your subscription-based expenses!_",
+  "main": "server.js",
+
+  "scripts": {
+    "install-dependencies": "npm run install-client && npm install",
+    "install-client": "cd client && npm install",
+    "start": "npm run client",
+    "build": "webpack --config webpack.prod.js --progress --color",
+    "server": "nodemon server --ignore client",
+    "client": "npm start --prefix client",
+    "lint": "eslint --ext js,jsx",
+    "lint:fix": "eslint --ext js,jsx --fix",
+    "check": "prettier --check",
+    "format": "prettier --write",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scratch-Tech-Software/Subslify.git"
+  },
+  "author": "Scratch Tech Software",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Scratch-Tech-Software/Subslify/issues"
+  },
+  "homepage": "https://github.com/Scratch-Tech-Software/Subslify#readme",
+  "private": true,
+  "dependencies": {
+  },
+  "devDependencies": {
+    "eslint": "^8.31.0",
+    "eslint-config-prettier": "^8.6.0",
+    "prettier": "^2.8.1"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "dist",
+      "client"
+    ]
+  }
+}
