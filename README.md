@@ -25,7 +25,6 @@ Project is created with:
 TODO: add technologies
 -->
 
-
 - React
 - webpack
 - Node.js
@@ -44,6 +43,12 @@ To run this project, install it locally using npm:
 > cd ./Subslify
 > npm install
 > npm start
+```
+
+To run the docker container, run the following command:
+
+```bash
+ docker-compose up -d
 ```
 
 [⬆ Back to top](#table-of-contents)
