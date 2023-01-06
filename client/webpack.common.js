@@ -10,7 +10,7 @@ const common = {
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath: '/dist/',
     clean: true,
   },
   stats: {
@@ -25,7 +25,16 @@ const common = {
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
+      {
+        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'static/[name][ext]',
+        },
+        exclude: /node_modules/,
+      },
     ],
+
   },
   plugins: [
     new HtmlWebpackPlugin({

@@ -1,10 +1,10 @@
 const path = require('path');
-const { mergeWithRules } = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const common = require('./webpack.common.js');
 
-const devConfig = {
+const dev = {
   mode: 'development',
   devtool: 'inline-source-map',
   plugins: [new ReactRefreshWebpackPlugin()],
@@ -16,9 +16,9 @@ const devConfig = {
         exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: 'swc-loader',
             options: {
-              plugins: ['react-refresh/babel'],
+              parseMap: true
             },
           },
         ],
@@ -50,14 +50,4 @@ const devConfig = {
   },
 };
 
-module.exports = mergeWithRules({
-  module: {
-    rules: {
-      test: 'match',
-      use: {
-        loader: 'match',
-        options: 'merge',
-      },
-    },
-  },
-})(common, devConfig);
+module.exports = merge(common, dev);
