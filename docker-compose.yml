@@ -1,12 +1,12 @@
 version: '3.8'
 services:
   mongodb:
-    image: mongo:latest # use the latest image.
-    container_name: mongodb # give your container a name
+    image: mongo:latest # use the latest image
+    container_name: mongodb # container's name
     restart: unless-stopped
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=root # set your container root username
-      - MONGO_INITDB_ROOT_PASSWORD=secret # set your container root password
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME} # set container root username
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD} # set container root password
     volumes:
       - ./database-data:/data/db
     ports:
@@ -20,15 +20,8 @@ services:
     ports:
       - 8081:8081
     environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: secret
+      ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_USERNAME}
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_PASSWORD}
       ME_CONFIG_MONGODB_SERVER: mongodb
       # use the name of the mongo container above for server env var.
       # In our case this is mongodb
-
-  adminer:
-    image: adminer:latest # latest image
-    container_name: adminer
-    restart: unless-stopped
-    ports:
-      - 8082:8082
