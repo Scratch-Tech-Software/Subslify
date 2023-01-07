@@ -41,14 +41,31 @@ To run this project, install it locally using npm:
 
 ```bash
 > cd ./Subslify
-> npm install
+> npm install-dependencies
+```
+
+To start the client, run the following command:
+
+```bash
 > npm start
+```
+
+To start the server, run the following command:
+
+```bash
+> npm run start-server
 ```
 
 To run the docker container, run the following command:
 
 ```bash
  docker-compose up -d
+```
+
+To stop the docker container, run the following command:
+
+```bash
+ docker-compose down
 ```
 
 [⬆ Back to top](#table-of-contents)
