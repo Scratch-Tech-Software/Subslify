@@ -73,7 +73,7 @@ To stop the docker container, run the following command:
 
 The following scripts are available:
 
-```md
+```markdown
 `install-deps`: Installs dependencies for both the client and server.
 `install-client`: Installs dependencies for the client.
 `install-server`: Installs dependencies for the server.
