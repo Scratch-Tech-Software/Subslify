@@ -41,11 +41,11 @@ const dev = {
       directory: path.resolve(__dirname, 'dist'),
       publicPath: '/',
     },
-    proxy: {
-      context: ['/api/**', 'static/**', '/**'],
-      target: 'http://localhost:5000',
-      secure: false,
-    },
+    // proxy: {
+    //   context: ['/api/**', 'static/**', '/**'],
+    //   target: 'http://localhost:5000',
+    //   secure: false,
+    // },
   },
 };
 
