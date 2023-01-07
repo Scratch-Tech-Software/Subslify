@@ -6,16 +6,15 @@ import 'express-async-errors';
 import connectDB from './db/connect.js';
 
 const app = express();
-dotenv.config();
+dotenv.config({ path: '../.env' });
 
 const port = process.env.PORT || 5002;
 
 const start = async () => {
   try {
-    await connectDB(
-      'mongodb://root:secret@localhost:27017/subslify-DB?authSource=admin&retryWrites=true&w=majority'
-    );
+    await connectDB(process.env.MONGO_URL);
     app.listen(port, () => {
+      console.log('🚀 Successfully connected to the database 🚀');
       console.log(`Server is listening on port ${port}...`);
     });
   } catch (error) {
