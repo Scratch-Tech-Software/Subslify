@@ -15,7 +15,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-docker": "docker-compose up -d",
     "stop-docker": "docker-compose down",
-    "start-server": "npm run start-docker && npm run start-server --prefix server",
+    "start-server": "npm run start-server --prefix server",
     "start-client": "npm start --prefix client",
     "start": "npm run start-client"
   },
