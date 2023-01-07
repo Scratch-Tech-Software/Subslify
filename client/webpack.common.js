@@ -10,7 +10,7 @@ const common = {
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/dist/',
+    publicPath: '/',
     clean: true,
   },
   stats: {
@@ -22,7 +22,10 @@ const common = {
     rules: [
       {
         test: /\.s?css$/i,
-        exclude: /node_modules/,
+        include: [
+          path.resolve(__dirname, 'src'),
+          path.resolve(__dirname, 'node_modules/normalize.css'),
+        ],
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
@@ -34,7 +37,6 @@ const common = {
         exclude: /node_modules/,
       },
     ],
-
   },
   plugins: [
     new HtmlWebpackPlugin({

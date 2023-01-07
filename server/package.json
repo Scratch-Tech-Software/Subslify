@@ -1,0 +1,32 @@
+{
+  "name": "subslify-server",
+  "version": "0.1.0",
+  "description": "The server-side component of a web app that helps users keep track of their subscriptions.",
+  "main": "server.js",
+  "scripts": {
+    "start-server": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Scratch-Tech-Software/Subslify.git"
+  },
+  "author": "Scratch Tech Software",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Scratch-Tech-Software/Subslify/issues"
+  },
+  "homepage": "https://github.com/Scratch-Tech-Software/Subslify#readme",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^8.31.0",
+    "eslint-config-prettier": "^8.6.0",
+    "prettier": "^2.8.1"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "dist",
+      "client"
+    ]
+  }
+}

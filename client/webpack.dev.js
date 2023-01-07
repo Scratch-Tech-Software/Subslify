@@ -18,7 +18,7 @@ const dev = {
           {
             loader: 'swc-loader',
             options: {
-              parseMap: true
+              parseMap: true,
             },
           },
         ],
@@ -45,7 +45,6 @@ const dev = {
       context: ['/api/**', 'static/**', '/**'],
       target: 'http://localhost:5000',
       secure: false,
-
     },
   },
 };
