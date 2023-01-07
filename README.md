@@ -48,26 +48,28 @@ To use the `.env` file:
 1. Create a new file in the root of your project and name it `.env`.
 2. Copy the contents of the `.env.sample` file into the `.env` file.
 3. Replace the placeholder values in the `.env` file with the appropriate values for your environment.
-4. Check if the `.env` is present in your `.gitignore` file to ensure that it is not checked into version control.
+4. Ensure that `.env` is not checked into version control.
 ```
+
+### Starting the Project
 
 To run this project, install it locally using npm:
 
 ```bash
 > cd ./Subslify
-> npm run install-deps
+> npm run install-dependencies
+```
+
+To start the server, run the following command:
+
+```bash
+> npm run start-server
 ```
 
 To start the client, run the following command:
 
 ```bash
 > npm start
-```
-
-To start the server, run the following command, it will also start the docker container if it is not already running:
-
-```bash
-> npm run start-server
 ```
 
 To run the docker container, run the following command:
