@@ -38,7 +38,7 @@ const dev = {
       'Access-Control-Allow-Headers': '*',
     },
     static: {
-      directory: path.resolve(__dirname, 'static'),
+      directory: path.resolve(__dirname, 'static/'),
       publicPath: '/',
     },
     // proxy: {
