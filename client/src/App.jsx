@@ -1,29 +1,16 @@
-import React from 'react';
-import './index.js';
-import Homepage from './Homepage';
-import Active from './Active';
-import { BrowserRouter, BrowserRouter as Router, Routes, Route, Switch, Link } from 'react-router-dom';
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Register, Landing, Error, Home } from './pages';
 
 const App = () => {
   return (
-    <Router>
-      <div className="app">
-        <Routes>
-          <Route path='/' element={<h1>Please Login</h1>}/>
-          <Route path='/home' element={<Homepage/>}/>
-          <Route path='/active' element={<Active/>}/>
-        </Routes>
-
-      </div>
-      <div className='links'>
-        <Link to="/home">Home Page</Link>
-        <Link to="/active">Active Subscription</Link>
-      </div>
-    </Router>
-
-     
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/landing' element={<Landing />} />
+        <Route path='*' element={<Error />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
-
 export default App;
