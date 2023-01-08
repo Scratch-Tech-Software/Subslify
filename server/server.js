@@ -12,14 +12,14 @@ const port = process.env.PORT || 5002;
 
 const start = async () => {
   try {
-    await connectDB(process.env.MONGO_URL);
+    await connectDB(process.env.MONGODB_URI);
     app.listen(port, () => {
       console.log('🚀 Successfully connected to the database 🚀');
       console.log(`Server is listening on port ${port}...`);
     });
   } catch (error) {
     console.error("🛑 Couldn't connect to the database 🛑");
-    console.log(`Something went wrong: ${error.message}`);
+    console.error(`Something went wrong: ${error.message}`);
   }
 };
 
