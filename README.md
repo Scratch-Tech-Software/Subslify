@@ -8,7 +8,8 @@ _Subscription overload? Not anymore! With Subslify, you can easily track, organi
 - [General info](#general-info)
 - [Technologies](#technologies)
 - [Setup](#setup)
-- [Scripts](#scripts)
+  - [Environment Variables](#environment-variables)
+  - [Starting the Project](#starting-the-project)
 
 ## General info
 

@@ -1,5 +1,4 @@
 const path = require('path');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const common = {
@@ -9,7 +8,7 @@ const common = {
 
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist/'),
     publicPath: '/',
     clean: true,
   },
@@ -41,6 +40,7 @@ const common = {
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
+      hash: true,
       template: path.resolve(__dirname, 'static/index.html'),
       filename: 'index.html',
     }),
