@@ -305,3 +305,24 @@ ul {
 .full-page {
   min-height: 100vh;
 }
+
+.landing nav {
+  width: var(--fluid-width);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+}
+
+nav img {
+  height: 3rem;
+  margin-right: 1rem;
+}
+
+.landing .page {
+  min-height: calc(100vh - var(--nav-height));
+  display: grid;
+  align-items: center;
+  margin-top: -3rem;
+}

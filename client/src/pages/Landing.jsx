@@ -1,10 +1,11 @@
 import main from '../assets/images/main.svg';
+import { Logo } from '../components';
 
 const Landing = () => {
   return (
-    <div>
+    <div className='landing'>
       <nav>
-        <h2>Subslify</h2>
+        <Logo />
       </nav>
       <section className='container page'>
         <div className='info'>
