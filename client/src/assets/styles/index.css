@@ -326,3 +326,30 @@ nav img {
   align-items: center;
   margin-top: -3rem;
 }
+.error {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.error img {
+  max-width: 600px;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.error h3 {
+  margin-bottom: 0.5rem;
+}
+
+.error p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: var(--grey-500);
+}
+
+.error a {
+  color: var(--primary-500);
+  text-decoration: underline;
+  text-transform: capitalize;
+}

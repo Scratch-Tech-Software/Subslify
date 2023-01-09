@@ -3,7 +3,7 @@ import img from '../assets/images/404.jpeg';
 
 const Error = () => {
   return (
-    <section className=''>
+    <section className='full-page error'>
       <div>
         <img src={img} alt='page not found' />
         <h3>Ohh! page not found</h3>
