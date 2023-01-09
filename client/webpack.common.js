@@ -42,6 +42,7 @@ const common = {
       inject: true,
       hash: true,
       template: path.resolve(__dirname, 'static/index.html'),
+      favicon: path.resolve(__dirname, 'static/favicon.ico'),
       filename: 'index.html',
     }),
   ].filter(Boolean),
