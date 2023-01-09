@@ -353,3 +353,17 @@ nav img {
   text-decoration: underline;
   text-transform: capitalize;
 }
+
+.btn {
+  margin-top: 1rem;
+}
+
+.member-btn {
+  width: 100%;
+  margin-top: 1rem;
+  background: transparent;
+  border: transparent;
+  color: var(--primary-500);
+  cursor: pointer;
+  letter-spacing: var(--letterSpacing);
+}
