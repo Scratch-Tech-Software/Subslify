@@ -1,0 +1,12 @@
+{
+  "subs": [
+    {
+      "name": "Netflix",
+      "tier": "Preimium",
+      "cost": 100,
+      "paymentDate": "01/08/2023",
+      "subscriptionType": "Personal",
+      "activiationDate": "12/08/2022"
+    }
+  ]
+}
