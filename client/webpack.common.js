@@ -1,4 +1,5 @@
 const path = require('path');
+const miniSVGDataURI = require('mini-svg-data-uri');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const common = {
@@ -26,6 +27,22 @@ const common = {
           path.resolve(__dirname, 'node_modules/normalize.css'),
         ],
         use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.svg$/,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 4 * 1024,
+          },
+        },
+        generator: {
+          dataUrl(content) {
+            return miniSVGDataURI(content.toString());
+          },
+          filename: 'static/[name][ext]',
+        },
+        exclude: /node_modules/,
       },
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
