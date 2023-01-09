@@ -1,11 +1,11 @@
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
 
 const Home = () => {
   return (
-    <div >
-      <Paper>
-        <h1>Hello World</h1>
-      </Paper>
+    <div>
+       <h1>Subslify</h1>
+      <Button variant="contained">Hi</Button>
     </div>
   );
 };

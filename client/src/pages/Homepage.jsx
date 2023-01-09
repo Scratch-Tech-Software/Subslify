@@ -1,5 +1,3 @@
-import React from 'react';
-import Active from './Active.jsx';
 
 const Homepage = () => {
   return (  
