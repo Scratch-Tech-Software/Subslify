@@ -5,7 +5,7 @@ import FormRow from './FormRow.jsx';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import '../assets/styles/ghostCard.css';
+import '../assets/styles/ghostCard.scss';
 
 const FormCard = () => {
   //state to handle form inputs
@@ -97,17 +97,15 @@ const FormCard = () => {
           <div className='ghostCardInput'>
 
 
-            <FormRow/>
+            <FormRow labelText={'Subscription Name'} />
 
-
-
-            <TextField
+            {/* <TextField
               id='outlined-basic'
               label='Subscription Name'
               name='subName'
               value={inputs.subName || ''}
               onChange={handleChange}
-            />
+            /> */}
           </div>
           <div className='ghostCardInput'>
             <TextField

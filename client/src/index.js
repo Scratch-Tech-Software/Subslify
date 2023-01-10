@@ -6,7 +6,6 @@ import './assets/styles/index.css';
 
 import App from './App.jsx';
 import { AppProvider } from './context/appContext.js';
-import '../src/assets/css/index.css';
 
 const container = document.getElementById('root');
 const root = createRoot(container);
