@@ -1,9 +1,10 @@
 import { Schema, model } from 'mongoose';
+import { isEmail } from 'validator';
 
 const UserSchema = new Schema({
   name: {
     type: String,
-    required: [true, 'Name is required'],
+    required: [true, 'Please provide a name'],
     minLenght: 3,
     maxLenght: 30,
     trim: true,
@@ -11,6 +12,10 @@ const UserSchema = new Schema({
   email: {
     type: String,
     required: [true, 'Email is required'],
+    validate: {
+      validator: isEmail,
+      message: 'Email is not valid',
+    },
     unique: true,
   },
   password: {
