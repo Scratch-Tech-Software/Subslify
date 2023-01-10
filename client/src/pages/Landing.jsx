@@ -1,10 +1,11 @@
 import main from '../assets/images/main.svg';
 import { Logo } from '../components';
 import { Link } from 'react-router-dom';
+import '../assets/styles/landing-page.scss';
 
 const Landing = () => {
   return (
-    <div className='landing'>
+    <div className='landing-page'>
       <nav>
         <Logo />
       </nav>
