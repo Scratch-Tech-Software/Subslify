@@ -1,5 +1,5 @@
 import React from 'react';
-import Active from './Active.jsx';
+import Active from './pages/Active.jsx';
 
 const Homepage = () => {
   return (  

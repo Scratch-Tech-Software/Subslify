@@ -2,7 +2,7 @@ import React from 'React';
 
 const GhostCard = () => {
 
-    const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState({});
 
   //for date picker
   const [date, setDate] = useState(null);

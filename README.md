@@ -8,7 +8,8 @@ _Subscription overload? Not anymore! With Subslify, you can easily track, organi
 - [General info](#general-info)
 - [Technologies](#technologies)
 - [Setup](#setup)
-- [Scripts](#scripts)
+  - [Environment Variables](#environment-variables)
+  - [Starting the Project](#starting-the-project)
 
 ## General info
 
@@ -38,23 +39,38 @@ TODO: add technologies
 TODO: add setup instructions
 -->
 
+### Environment Variables
+
+This project requires an `.env` file to function properly. A sample `.env.sample` file has been provided to show you the variables that need to be defined.
+
+To use the `.env` file:
+
+```markdown
+1. Create a new file in the root of your project and name it `.env`.
+2. Copy the contents of the `.env.sample` file into the `.env` file.
+3. Replace the placeholder values in the `.env` file with the appropriate values for your environment.
+4. Ensure that `.env` is not checked into version control.
+```
+
+### Starting the Project
+
 To run this project, install it locally using npm:
 
 ```bash
 > cd ./Subslify
-> npm run install-deps
+> npm run install-dependencies
+```
+
+To start the server, run the following command:
+
+```bash
+> npm run start-server
 ```
 
 To start the client, run the following command:
 
 ```bash
 > npm start
-```
-
-To start the server, run the following command, it will also start the docker container if it is not already running:
-
-```bash
-> npm run start-server
 ```
 
 To run the docker container, run the following command:
@@ -67,27 +83,6 @@ To stop the docker container, run the following command:
 
 ```bash
  > npm run stop-docker
-```
-
-## Scripts
-
-The following scripts are available:
-
-```markdown
-`install-deps`: Installs dependencies for both the client and server.
-`install-client`: Installs dependencies for the client.
-`install-server`: Installs dependencies for the server.
-`build-client`: Builds the client.
-`lint`: Lints the codebase.
-`lint-fix`: Lints the codebase and attempts to fix any issues.
-`check`: Checks the codebase for formatting issues.
-`format`: Formats the codebase.
-`test`: Runs tests.
-`start-docker`: Starts Docker containers.
-`stop-docker`: Stops Docker containers.
-`start-server`: Starts the server.
-`start-client`: Starts the client.
-`start`: Starts the client.
 ```
 
 [⬆ Back to top](#table-of-contents)
