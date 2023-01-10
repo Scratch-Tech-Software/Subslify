@@ -1,5 +1,7 @@
-import { useState, useReducer, useContext, createContext } from 'react';
-import { Alert } from '../components/index';
+import { useReducer, useContext, createContext } from 'react';
+
+import reducer from './reducer';
+import { DISPLAY_ALERT, REMOVE_ALERT } from './actions';
 
 const initialState = {
   isLoading: false,
@@ -10,10 +12,23 @@ const initialState = {
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const [state, setState] = useState(initialState);
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const displayAlert = () => {
+    dispatch({ type: DISPLAY_ALERT });
+    removeAlert();
+  };
+
+  const removeAlert = () => {
+    setTimeout(() => {
+      dispatch({ type: REMOVE_ALERT });
+    }, 1500);
+  };
 
   return (
-    <AppContext.Provider value={{ ...state }}> {children} </AppContext.Provider>
+    <AppContext.Provider value={{ ...state, displayAlert, removeAlert }}>
+      {children}
+    </AppContext.Provider>
   );
 };
 

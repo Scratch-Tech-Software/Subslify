@@ -1,7 +1,10 @@
+import { useAppContext } from '../context/appContext';
 const Alert = () => {
+  const { alert } = useAppContext();
   // TODO: Use the global state to display an alert if there is an error
-  // Todo: Use the global state to display an alert if there is a success
-  return <div className='alert alert-danger'>Alert</div>;
+  // TODO: Use the global state to display an alert if there is a success
+  // TODO: Use p tag to display the message
+  return <div className={`alert alert-${alert.type}`}>{alert.msg}</div>;
 };
 
 export default Alert;

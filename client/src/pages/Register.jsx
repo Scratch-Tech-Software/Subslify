@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Logo, FormRow, Alert } from '../components';
+import { useAppContext } from '../context/appContext';
 
 const initialState = {
   name: '',
   email: '',
   password: '',
   isRegistered: true,
-  showAlert: false,
 };
 
 const Register = () => {
   const [user, setUser] = useState(initialState);
+
+  const { isLoading, showAlert, displayAlert } = useAppContext();
 
   const toggleMember = () => {
     setUser({ ...user, isRegistered: !user.isRegistered });
@@ -20,12 +22,16 @@ const Register = () => {
   // TODO: use global context to manage user state
 
   const handleChange = (e) => {
-    console.log(e.target);
+    setUser({ ...user, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    const { name, email, password, isRegistered } = user;
+    if (!email || !password || (!isRegistered && !name)) {
+      displayAlert();
+    }
+    console.log(user);
   };
 
   return (
@@ -33,7 +39,7 @@ const Register = () => {
       <form className='form' onSubmit={handleSubmit}>
         <Logo />
         <h3>{user.isRegistered ? 'Login' : 'Register'}</h3>
-        {user.showAlert && <Alert />}
+        {showAlert && <Alert />}
         {!user.isRegistered && (
           <FormRow
             type='text'
@@ -53,7 +59,7 @@ const Register = () => {
         <FormRow
           type='password'
           name='password'
-          value={user.email}
+          value={user.password}
           handleChange={handleChange}
           autocomplete='current-password'
         />
