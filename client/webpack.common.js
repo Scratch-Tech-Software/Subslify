@@ -1,4 +1,5 @@
 const path = require('path');
+const miniSVGDataURI = require('mini-svg-data-uri');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const common = {
@@ -28,6 +29,22 @@ const common = {
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
+        test: /\.svg$/,
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 4 * 1024,
+          },
+        },
+        generator: {
+          dataUrl(content) {
+            return miniSVGDataURI(content.toString());
+          },
+          filename: 'static/[name][ext]',
+        },
+        exclude: /node_modules/,
+      },
+      {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
         type: 'asset/resource',
         generator: {
@@ -42,6 +59,7 @@ const common = {
       inject: true,
       hash: true,
       template: path.resolve(__dirname, 'static/index.html'),
+      favicon: path.resolve(__dirname, 'static/favicon.ico'),
       filename: 'index.html',
     }),
   ].filter(Boolean),

@@ -1,0 +1,33 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  font-family: "Roboto";
+}
+
+body {
+
+  background-color: aliceblue;
+}
+
+.ghostCard {
+
+  width: 25rem;
+}
+
+
+.ghostCardInput{
+
+  padding-bottom: 1rem;
+}
+
+/* controls Button component */
+button.MuiButton-root {
+  margin-top: 1rem;
+
+}
+
+div.MuiPaper-root {
+
+  background-color: aliceblue;
+}

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Paper, TextField } from '@mui/material/';
 import Button from '@mui/material/Button';
+import FormRow from './FormRow.jsx';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import '../assets/styles/ghostCard.css';
 
 const FormCard = () => {
   //state to handle form inputs
@@ -93,6 +95,12 @@ const FormCard = () => {
         <form onSubmit={handleClick}>
           <h3>Track New Sub</h3>
           <div className='ghostCardInput'>
+
+
+            <FormRow/>
+
+
+
             <TextField
               id='outlined-basic'
               label='Subscription Name'

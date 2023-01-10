@@ -32,7 +32,7 @@ const Active = () => {
 
   return (
     <section>
-      <h1>Subscriptions</h1>
+      <h3>Subscriptions</h3>
       {/* render the current state of subList. At the beginning just a form card. then it will be an array of Sub Cards */}
       {subList}
       <Button onClick={fetchData}>Get Some Data</Button>
