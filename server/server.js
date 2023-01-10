@@ -7,6 +7,7 @@ import connectDB from './db/connect.js';
 
 // routers
 import authRouter from './routes/authRoutes.js';
+import subscriptionsRouter from './routes/subscriptionsRoutes.js';
 
 // middleware
 import notFoundMiddleware from './middleware/not-found.js';
@@ -25,6 +26,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/subscriptions', subscriptionsRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
