@@ -5,10 +5,22 @@ import 'express-async-errors';
 // db and authenticateUser
 import connectDB from './db/connect.js';
 
+// middleware
+import notFoundMiddleware from './middleware/not-found.js';
+import errorHandlerMiddleware from './middleware/error-handler.js';
+
+dotenv.config();
+
 const app = express();
 dotenv.config({ path: '../.env' });
-
 const port = process.env.PORT || 5002;
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+app.use(notFoundMiddleware);
+app.use(errorHandlerMiddleware);
 
 const start = async () => {
   try {
