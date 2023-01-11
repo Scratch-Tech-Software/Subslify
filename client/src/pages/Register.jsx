@@ -7,12 +7,13 @@ const initialState = {
   email: '',
   password: '',
   isRegistered: true,
+  user: null,
 };
 
 const Register = () => {
   const [user, setUser] = useState(initialState);
 
-  const { isLoading, showAlert, displayAlert } = useAppContext();
+  const { isLoading, showAlert, displayAlert, registerUser } = useAppContext();
 
   const toggleMember = () => {
     setUser({ ...user, isRegistered: !user.isRegistered });
@@ -30,8 +31,13 @@ const Register = () => {
     const { name, email, password, isRegistered } = user;
     if (!email || !password || (!isRegistered && !name)) {
       displayAlert();
+      return;
     }
-    console.log(user);
+    if (isRegistered) {
+      console.log("already registered, let's login");
+      return;
+    }
+    registerUser({ name, email, password });
   };
 
   return (
@@ -64,7 +70,7 @@ const Register = () => {
           autocomplete='current-password'
         />
 
-        <button type='submit' className='btn btn-block'>
+        <button type='submit' className='btn btn-block' disabled={isLoading}>
           Submit
         </button>
         <p>
