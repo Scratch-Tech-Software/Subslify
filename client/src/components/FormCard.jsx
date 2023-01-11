@@ -7,7 +7,9 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import '../assets/styles/form-card.scss';
 
-const FormCard = () => {
+const FormCard = ({ fetchData }) => {
+  const API_URL = 'http://localhost:3000/subs';
+
   //state to handle form inputs
   const [inputs, setInputs] = useState({});
 
@@ -30,8 +32,6 @@ const FormCard = () => {
       ...prevState,
       [e.target.name]: e.target.value,
     }));
-
-    console.log(inputs);
   };
 
   const handleClick = (e) => {
@@ -54,25 +54,9 @@ const FormCard = () => {
       }),
     };
 
-    fetch(URL, options)
+    fetch(API_URL, options)
       .then((data) => data.json())
       .then((data) => {
-        console.log(data);
-        //after we get a success response, we should grab all of the quests again
-        console.log('quest created!');
-
-        // setInputs({});
-
-        //since we are returning the new data point back, we are going to re-render data to have the new data point and therefore cause a re-render for the entire application
-
-        /* The reason we wrap the code after the arrow in () is because without it, JS thinks we are writing a function. This is required whenever returning an object ({} OR []) in a single line. source in the link below*/
-        //https://stackoverflow.com/questions/41655402/react-setstate-where-does-prevstate-come-from
-
-        setValue((prevState) => [...prevState, data[0]]);
-
-        /* The reason we wrap the code after the arrow in () is because without it, JS thinks we are writing a function. This is required whenever returning an object ({} OR []) in a single line. source in the link below*/
-        //https://stackoverflow.com/questions/41655402/react-setstate-where-does-prevstate-come-from
-
         setInputs((prevState) => ({
           ...prevState,
           subName: '',
@@ -81,6 +65,7 @@ const FormCard = () => {
           subType: '',
         }));
 
+        fetchData();
         setPaymentDate(null);
         setActivationDate(null);
 
@@ -99,37 +84,22 @@ const FormCard = () => {
             labelText='Subscription Name'
             name='subName'
             value={inputs.subName || ''}
-            onChange={handleChange}
+            handleChange={handleChange}
           />
-
-          {/* <TextField
-              id='outlined-basic'
-              label='Subscription Name'
-              name='subName'
-              value={inputs.subName || ''}
-              onChange={handleChange}
-            /> */}
-
-          {/* <TextField
-              label='Tier'
-              name='subTier'
-              value={inputs.subTier || ''}
-              onChange={handleChange}
-            /> */}
 
           <FormRow
             labelText='Subscription Tier'
             name='subTier'
-            value={inputs.subName || ''}
-            onChange={handleChange}
+            value={inputs.subTier || ''}
+            handleChange={handleChange}
           />
 
-          {/* <TextField
-              label='Cost per month'
-              name='subMonthCost'
-              value={inputs.subCost || ''}
-              onChange={handleChange}
-            /> */}
+          <FormRow
+            labelText='Cost Per Month'
+            name='subCost'
+            value={inputs.subCost || ''}
+            handleChange={handleChange}
+          />
 
           <div className='formInputDate'>
             <LocalizationProvider dateAdapter={AdapterMoment}>
@@ -144,12 +114,12 @@ const FormCard = () => {
             </LocalizationProvider>
           </div>
 
-          {/* <TextField
-              label='Type of Subscription'
-              name='subType'
-              value={inputs.subType || ''}
-              onChange={handleChange}
-            /> */}
+          <FormRow
+            labelText='Type of Subscription'
+            name='subType'
+            value={inputs.subType || ''}
+            handleChange={handleChange}
+          />
 
           <div className='formInputDate'>
             <LocalizationProvider dateAdapter={AdapterMoment}>
@@ -168,6 +138,13 @@ const FormCard = () => {
           </Button>
         </form>
       </Paper>
+
+      {/* <TextField
+              label='Tier'
+              name='subTier'
+              value={inputs.subTier || ''}
+              onChange={handleChange}
+            /> */}
     </div>
   );
 };

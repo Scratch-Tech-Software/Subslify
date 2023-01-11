@@ -3,43 +3,46 @@ import { Paper, TextField, Button } from '@mui/material/';
 import '../assets/styles/sub-card.scss';
 
 //Tree shake sub from props
-const SubCard = ({ sub }) => {
+const SubCard = ({
+  name,
+  tier,
+  cost,
+  paymentDate,
+  subscriptionType,
+  activiationDate,
+}) => {
   //return a Paper/Box with the subscription information
-  return sub.map((sub) => {
-    return (
-      <div className='subCard'>
-        <Paper key={sub.id}>
-          <div className='subCardInput'>
-            <TextField
-              label='Subscription Name'
-              id='outlined-basic'
-              value={sub.name}
-            />
-            <br></br>
-            <TextField
-              label='Subscription Cost'
-              id='outlined-basic'
-              value={sub.cost}
-            />
-            <br></br>
-            <TextField
-              label='Subscription Payment Date'
-              id='outlined-basic'
-              value={sub.paymentDate}
-            />
-            <br></br>
-            <TextField
-              label='Subscription Type'
-              id='outlined-basic'
-              value={sub.subscriptionType}
-            />
-
-            <Button>Edit</Button><Button>Delete</Button>
-          </div>
-        </Paper>
+  return (
+    <Paper>
+      <div className='subCardInput'>
+        <TextField label='Subscription Name' id='outlined-basic' value={name} />
+        <br></br>
+        <TextField label='Subscription Cost' id='outlined-basic' value={tier} />
+        <br></br>
+        <TextField label='Subscription Cost' id='outlined-basic' value={cost} />
+        <br></br>
+        <TextField
+          label='Subscription Payment Date'
+          id='outlined-basic'
+          value={paymentDate}
+        />
+        <br></br>
+        <TextField
+          label='Subscription Type'
+          id='outlined-basic'
+          value={subscriptionType}
+        />
+        <br></br>
+        <TextField
+          label='Subscription Activation Date'
+          id='outlined-basic'
+          value={activiationDate}
+        />
+        <Button>Edit</Button>
+        <Button>Delete</Button>
       </div>
-    );
-  });
+    </Paper>
+  );
 };
 
 export default SubCard;

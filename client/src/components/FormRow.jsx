@@ -30,7 +30,7 @@ const FormRow = ({
         type={type}
         name={name}
         id='outlined-basic'
-        onChange={() => handleChange}
+        onChange={handleChange}
         className='formInput'
         autoComplete={autocomplete}
       />

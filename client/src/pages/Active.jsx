@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FormCard from '../components/FormCard';
 import { Button } from '@mui/material';
 import SubCard from '../components/SubCard';
+import { Form } from 'react-router-dom';
 
 const Active = () => {
   //had to install a JSON Server package to  https://www.npmjs.com/package/json-server
@@ -13,16 +14,32 @@ const Active = () => {
 
   //pseduo state mangement
   //start the subList with the Form Card to take in new subscription tracking and make the "last card" the form
-  const [subList, setSubList] = useState([<FormCard />]);
+  const [subList, setSubList] = useState([]);
 
   const fetchData = () => {
     fetch(API_URL)
       .then((data) => data.json())
       .then((data) => {
+        //updating state to have the SubCard the first in the array and making unshifting the previous to after
         console.log(data);
 
-        //updating state to have the SubCard the first in the array and making unshifting the previous to after
-        setSubList((prevState) => [<SubCard sub={data} />, ...prevState]);
+        const subListBox = data.map((sub) => {
+          return (
+            <div className='subCard'>
+              <SubCard
+                key={sub.id}
+                name={sub.name}
+                tier={sub.tier}
+                cost={sub.cost}
+                paymentDate={sub.paymentDate}
+                subscriptionType={sub.subscriptionType}
+                activiationDate={sub.activiationDate}
+              />
+            </div>
+          );
+        });
+
+        setSubList(() => [...subListBox]);
       });
   };
 
@@ -31,7 +48,7 @@ const Active = () => {
       <h3>Subscriptions</h3>
       {/* render the current state of subList. At the beginning just a form card. then it will be an array of Sub Cards */}
       <div className='subCards'>{subList}</div>
-
+      <FormCard setSubList={setSubList} fetchData={fetchData} />
       <Button onClick={fetchData}>Get Some Data</Button>
     </section>
   );
