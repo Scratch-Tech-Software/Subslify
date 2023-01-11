@@ -1,15 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useResolvedPath, useMatch } from 'react-router-dom';
 
 const NavBar = () => {
   return (  
     <nav className="navbar">
-      <div className="links">
-        <Link to='/'>Subscription Dashboard</Link>
-        <Link to='/register'>Register</Link>
-        <Link to='/landing'>Landing Page</Link>
-        <Link to='/active'>Active Subscriptions</Link>
-      </div>
+      <Link to="/dashboard" className='title'>Sublify</Link>
+      <ul className="links">
+        <li><Link to='/dashboard'>Dashboard</Link></li>
+        <li><Link to='/register'>Register</Link></li>
+        <li><Link to='/landing'>Landing Page</Link></li>
+        <li><Link to='/active'>Active Subscriptions</Link></li>
+      </ul>
     </nav>
   );
 };

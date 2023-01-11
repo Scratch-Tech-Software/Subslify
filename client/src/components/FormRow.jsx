@@ -1,3 +1,5 @@
+import { TextField } from '@mui/material/';
+
 const FormRow = ({
   type,
   name,
@@ -16,6 +18,17 @@ const FormRow = ({
         value={value}
         name={name}
         id={name}
+        onChange={handleChange}
+        className='form-input'
+        autoComplete={autocomplete}
+      />
+
+      <TextField
+        label={labelText ?? name}
+        value={value}
+        type={type}
+        name={name}
+        id='outlined-basic'
         onChange={handleChange}
         className='form-input'
         autoComplete={autocomplete}

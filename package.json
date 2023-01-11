@@ -30,7 +30,13 @@
   },
   "homepage": "https://github.com/Scratch-Tech-Software/Subslify#readme",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/material": "^5.11.4",
+    "install": "^0.13.0",
+    "npm": "^9.2.0"
+  },
   "devDependencies": {
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.6.0",
