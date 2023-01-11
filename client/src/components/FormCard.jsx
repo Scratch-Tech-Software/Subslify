@@ -5,7 +5,7 @@ import FormRow from './FormRow.jsx';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import '../assets/styles/ghostCard.scss';
+import '../assets/styles/form-card.scss';
 
 const FormCard = () => {
   //state to handle form inputs
@@ -90,40 +90,48 @@ const FormCard = () => {
   };
 
   return (
-    <div className='ghostCard'>
+    <div className='form-card'>
       <Paper>
         <form onSubmit={handleClick}>
           <h3>Track New Sub</h3>
-          <div className='ghostCardInput'>
 
+          <FormRow
+            labelText='Subscription Name'
+            name='subName'
+            value={inputs.subName || ''}
+            onChange={handleChange}
+          />
 
-            <FormRow labelText={'Subscription Name'} />
-
-            {/* <TextField
+          {/* <TextField
               id='outlined-basic'
               label='Subscription Name'
               name='subName'
               value={inputs.subName || ''}
               onChange={handleChange}
             /> */}
-          </div>
-          <div className='ghostCardInput'>
-            <TextField
+
+          {/* <TextField
               label='Tier'
               name='subTier'
               value={inputs.subTier || ''}
               onChange={handleChange}
-            />
-          </div>
-          <div className='ghostCardInput'>
-            <TextField
+            /> */}
+
+          <FormRow
+            labelText='Subscription Tier'
+            name='subTier'
+            value={inputs.subName || ''}
+            onChange={handleChange}
+          />
+
+          {/* <TextField
               label='Cost per month'
               name='subMonthCost'
               value={inputs.subCost || ''}
               onChange={handleChange}
-            />
-          </div>
-          <div className='ghostCardInput'>
+            /> */}
+
+          <div className='formInputDate'>
             <LocalizationProvider dateAdapter={AdapterMoment}>
               <DatePicker
                 label='Date of Payment'
@@ -135,15 +143,15 @@ const FormCard = () => {
               />
             </LocalizationProvider>
           </div>
-          <div className='ghostCardInput'>
-            <TextField
+
+          {/* <TextField
               label='Type of Subscription'
               name='subType'
               value={inputs.subType || ''}
               onChange={handleChange}
-            />
-          </div>
-          <div className='ghostCardInput'>
+            /> */}
+
+          <div className='formInputDate'>
             <LocalizationProvider dateAdapter={AdapterMoment}>
               <DatePicker
                 label='Activation Date'

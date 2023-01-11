@@ -1,7 +1,8 @@
-.dashboardContainer {
+.dashboard {
+  padding-top: 10rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 100px 100px 100px;
   justify-items: center;
   align-items: center;
   align-content: center;

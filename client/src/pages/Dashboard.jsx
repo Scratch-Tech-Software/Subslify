@@ -1,11 +1,10 @@
 import { Card, CardContent } from '@mui/material/';
 import { Link } from 'react-router-dom';
-// import { Register, Landing, Error, Active } from './pages';
 import '../assets/styles/dashboard.scss';
 
 const Dashboard = () => {
   return (
-    <section className='dashboardContainer'>
+    <section className='dashboard'>
       <h3>Subscriptions Dashboard</h3>
 
       <div className='item-active'>
@@ -15,7 +14,6 @@ const Dashboard = () => {
           </CardContent>
         </Card>
       </div>
-
       <div className='item-trails'>
         <Card>
           <CardContent>
