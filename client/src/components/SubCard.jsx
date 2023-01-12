@@ -14,8 +14,33 @@ const SubCard = ({
   fetchData,
 }) => {
   const API_URL = 'http://localhost:3000/subs';
-  //Delete Data Method
 
+  const subInformation = {
+    subName: '',
+    subTier: '',
+    subCost: '',
+    subType: '',
+  };
+
+  //state to handle form inputs
+  const [inputs, setInputs] = useState(subInformation);
+
+  const handleChange = (e) => {
+    //console logs to see state being updated
+
+    // console.log({ inputs });
+    // console.log([e.target.name]);
+    // console.log('on change');
+    // console.log(inputs);
+
+    //descontructing target name from inputs object and reassigning the keyvalue to the current value
+    setInputs((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  //Delete Function
   const handleDelete = (subId) => {
     const options = {
       method: 'DELETE',
@@ -38,10 +63,7 @@ const SubCard = ({
       });
   };
 
-
-
   const handleEdit = (subId) => {
-    
     /**
      * TO DO:
      * change options below
@@ -94,7 +116,7 @@ const SubCard = ({
           id='outlined-basic'
           value={activiationDate}
         />
-        <Button onClick={}>Edit</Button>
+        <Button>Edit</Button>
         <Button onClick={() => handleDelete(id)}>Delete</Button>
       </div>
     </Paper>

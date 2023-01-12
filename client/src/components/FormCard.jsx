@@ -10,8 +10,15 @@ import '../assets/styles/form-card.scss';
 const FormCard = ({ fetchData }) => {
   const API_URL = 'http://localhost:3000/subs';
 
+  const subInformation = {
+    subName: '',
+    subTier: '',
+    subCost: '',
+    subType: '',
+  };
+
   //state to handle form inputs
-  const [inputs, setInputs] = useState({});
+  const [inputs, setInputs] = useState(subInformation);
 
   //for date picker
   const [paymentDate, setPaymentDate] = useState(null);
