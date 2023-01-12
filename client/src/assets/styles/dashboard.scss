@@ -1,58 +1,58 @@
 .dashboard {
-    padding-top: 10rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 100px 100px 100px;
-    justify-items: center;
+  padding-top: 10rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 100px 100px 100px;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+
+  h3 {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+
+  div {
+    height: 10rem;
+    width: 13rem;
+    line-height: 8rem;
+
+    vertical-align: middle;
+  }
+
+  div.MuiCardContent-root {
+    // justify-content: center;
+    text-align: center;
     align-items: center;
-    align-content: center;
-  
-    h3 {
-      grid-column-start: 2;
-      grid-column-end: 4;
-      grid-row-start: 1;
-      grid-row-end: 2;
-    }
-  
-    div {
-      height: 10rem;
-      width: 13rem;
-      line-height: 8rem;
-  
-      vertical-align: middle;
-    }
-  
-    div.MuiCardContent-root {
-      // justify-content: center;
-      text-align: center;
-      align-items: center;
-    }
-  
-    .item-active {
-      grid-column-start: 1;
-      grid-column-end: 2;
-      grid-row-start: 2;
-      grid-row-end: 5;
-    }
-  
-    .item-trails {
-      grid-column-start: 2;
-      grid-column-end: 3;
-      grid-row-start: 2;
-      grid-row-end: 5;
-    }
-  
-    .item-summary {
-      grid-column-start: 3;
-      grid-column-end: 4;
-      grid-row-start: 2;
-      grid-row-end: 5;
-    }
-  
-    .item-past {
-      grid-column-start: 4;
-      grid-column-end: 5;
-      grid-row-start: 2;
-      grid-row-end: 5;
-    }
+  }
+
+  .item-active {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 5;
+  }
+
+  .item-trails {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 5;
+  }
+
+  .item-summary {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 5;
+  }
+
+  .item-past {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 2;
+    grid-row-end: 5;
+  }
 }
