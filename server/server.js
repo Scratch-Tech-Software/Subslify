@@ -1,14 +1,20 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import 'express-async-errors';
+import userRoute from './routes/user.js';
 
 // db and authenticateUser
 import connectDB from './db/connect.js';
 
 const app = express();
+app.use(express.json());
 dotenv.config({ path: '../.env' });
 
 const port = process.env.PORT || 5002;
+
+app.get('/', (req,res,next) => {
+  res.status(200).send(json({}))
+})
 
 const start = async () => {
   try {
@@ -24,3 +30,4 @@ const start = async () => {
 };
 
 start();
+
