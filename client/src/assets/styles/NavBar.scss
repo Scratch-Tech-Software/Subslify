@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fredoka+One&display=swap');
+
 * {
     box-sizing: border-box;
     grid-template-columns: 100px 50px 100px;
@@ -18,13 +20,16 @@
     text-decoration: none;
     font-size: 18px;
     color: #0B4F6C;
+    background-color: transparent;
     display: float;
-    transition: 0.3s;
+    padding: 20px;
 }
 
 .navbar .title {
     font-size: 50px;
     color: #0B4F6C;
+    font-family: 'Fredoka One', cursive;
+    // font-family: 'Bebas Neue', cursive;
 }
 
 .navbar .links{
@@ -35,17 +40,28 @@
 }
 
 .navbar li{
-    margin: 5px 0;
+    margin: 10px 0;
     border: 1px none #999;
+    font-size: 40px;
     text-align: left;
+    font-family: 'Fredoka One', cursive;
+    // font-family: 'Bebas Neue', cursive;
+
+    // border: solid #FFA630;
+    // border-radius: 25px;
 }
 
-.navbar ul a:active{
+.navbar .active{
     background-color: #E1EFE6;
-    color: #E1EFE6; 
+    color:#FFA630;
+    margin: 0;
+    padding: 20px;
+    border-radius: 15px;
 }
 
-.navbar li:hover {
-    background-color: #E1EFE6;
+.navbar a:hover {
+    color: #FFA630;
+    border-radius: 15px;
+    padding: 20px;
 }
 
