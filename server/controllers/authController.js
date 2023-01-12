@@ -10,6 +10,13 @@ const register = async (req, res) => {
   if (!email || !password) {
     throw new CustomAPIError('Email and password are required');
   }
+
+  const userAlraedyExists = await User.findOne({ email });
+
+  if (userAlraedyExists) {
+    throw new BadRequestError('Email already in use');
+  }
+
   const user = await User.create({ name, email, password });
   res.status(StatusCodes.CREATED).json({ user });
 };
