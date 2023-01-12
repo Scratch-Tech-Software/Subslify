@@ -3,8 +3,8 @@ import FormCard from '../components/FormCard';
 import { Button } from '@mui/material';
 import SubCard from '../components/SubCard';
 import Title from '../components/Title';
-import moment from 'moment';
 import '../assets/styles/active.scss';
+import '../assets/styles/sub-card2.scss';
 import { useEffect } from 'react';
 
 const Active = () => {
@@ -34,18 +34,27 @@ const Active = () => {
           console.log('sub activation date', sub.name, sub.activationDate);
 
           return (
-            <div className='sub-card'>
-              <SubCard
-                key={sub.id}
-                id={sub.id}
-                name={sub.name}
-                tier={sub.tier}
-                cost={sub.cost}
-                paymentDate={sub.paymentDate}
-                subscriptionType={sub.subscriptionType}
-                activationDate={sub.activationDate}
-                fetchData={fetchData}
-              />
+            <div>
+              <div className='sub-card'>
+                <SubCard
+                  key={sub.id}
+                  id={sub.id}
+                  name={sub.name}
+                  tier={sub.tier}
+                  cost={sub.cost}
+                  paymentDate={sub.paymentDate}
+                  subscriptionType={sub.subscriptionType}
+                  activationDate={sub.activationDate}
+                  fetchData={fetchData}
+                />
+              </div>
+
+              <div className='sub-card2'>
+                <div className='subType'>{sub.subscriptionType}</div>
+                <div className='subCost'>${sub.cost} per month</div>
+                <div className='subName'>{sub.name}</div>
+                {/* <div className='subActivation'>{sub.activationDate}</div> */}
+              </div>
             </div>
           );
         });
