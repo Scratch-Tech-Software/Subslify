@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "webpack-dev-server --config webpack.dev.js --progress --color",
+    "start-frontend-db": "json-server --watch db.json",
     "build": "webpack --config webpack.prod.js --progress --color",
     "lint": "eslint --ext js,jsx",
     "lint-fix": "eslint --ext js,jsx --fix",

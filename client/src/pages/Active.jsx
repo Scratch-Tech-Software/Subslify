@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import FormCard from '../components/FormCard';
 import { Button } from '@mui/material';
 import SubCard from '../components/SubCard';
-import { Form } from 'react-router-dom';
+import '../assets/styles/active.scss';
 
 const Active = () => {
   //had to install a JSON Server package to  https://www.npmjs.com/package/json-server
@@ -25,7 +25,7 @@ const Active = () => {
 
         const subListBox = data.map((sub) => {
           return (
-            <div className='subCard'>
+            <div className='sub-card'>
               <SubCard
                 key={sub.id}
                 name={sub.name}
@@ -44,13 +44,15 @@ const Active = () => {
   };
 
   return (
-    <section>
+    <div className='active'>
       <h3>Subscriptions</h3>
       {/* render the current state of subList. At the beginning just a form card. then it will be an array of Sub Cards */}
-      <div className='subCards'>{subList}</div>
-      <FormCard setSubList={setSubList} fetchData={fetchData} />
-      <Button onClick={fetchData}>Get Some Data</Button>
-    </section>
+      <div className='active-cards'>
+        {subList}
+        <FormCard setSubList={setSubList} fetchData={fetchData} />
+        <Button onClick={fetchData}>Get Some Data</Button>
+      </div>
+    </div>
   );
 };
 
