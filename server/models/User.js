@@ -1,5 +1,6 @@
 import { Schema, model } from 'mongoose';
 import validator from 'validator';
+import bcrypt from 'bcryptjs';
 
 const UserSchema = new Schema({
   name: {
@@ -24,6 +25,11 @@ const UserSchema = new Schema({
     minLength: 6,
     maxLength: 30,
   },
+});
+
+UserSchema.pre('save', async function (next) {
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
 });
 
 export default model('User', UserSchema);
