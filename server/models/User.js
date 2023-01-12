@@ -5,8 +5,8 @@ const UserSchema = new Schema({
   name: {
     type: String,
     required: [true, 'Please provide a name'],
-    minLenght: 3,
-    maxLenght: 30,
+    minLength: 3,
+    maxLength: 30,
     trim: true,
   },
   email: {
@@ -21,8 +21,8 @@ const UserSchema = new Schema({
   password: {
     type: String,
     required: [true, 'Password is required'],
-    minLenght: 6,
-    maxLenght: 30,
+    minLength: 6,
+    maxLength: 30,
   },
 });
 
