@@ -61,6 +61,19 @@ const Active = () => {
   return (
     <div className='active'>
       <Title title='Subscriptions' />
+      {/* INSERT nav bar here! */}
+      <nav class='crumbs'>
+        <ol>
+          <li class='crumb'>
+            <a href='#'>item1</a>
+          </li>
+          <li class='crumb'>
+            <a href='#'>item2</a>
+          </li>
+          <li class='crumb'>item3</li>
+        </ol>
+      </nav>
+
       {/* render the current state of subList. At the beginning just a form card. then it will be an array of Sub Cards */}
       <div className='active-cards'>
         {subList}
