@@ -13,6 +13,7 @@ const initialState = {
   isLoading: false,
   showAlert: false,
   alert: { type: '', message: '' },
+  user: null,
 };
 
 const AppContext = createContext();
@@ -35,10 +36,11 @@ const AppProvider = ({ children }) => {
     dispatch({ type: REGISTER_USER_BEGIN });
     try {
       const response = await axios.post('/api/v1/auth/register', newUser);
-      console.log(response);
+      // console.log(response);
       const { user } = response.data;
       dispatch({ type: REGISTER_USER_SUCCESS, payload: { user } });
     } catch (error) {
+      // console.error(error.response);
       dispatch({
         type: REGISTER_USER_ERROR,
         payload: { msg: error.response.data.message },

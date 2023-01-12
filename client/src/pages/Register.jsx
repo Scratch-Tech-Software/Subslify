@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Logo, FormRow, Alert } from '../components';
 import { useAppContext } from '../context/appContext';
+import { useNavigate } from 'react-router-dom';
 
 const initialState = {
   name: '',
@@ -11,24 +12,26 @@ const initialState = {
 };
 
 const Register = () => {
-  const [user, setUser] = useState(initialState);
+  const navigate = useNavigate();
+  const [newUser, setNewUser] = useState(initialState);
 
-  const { isLoading, showAlert, displayAlert, registerUser } = useAppContext();
+  const { user, isLoading, showAlert, displayAlert, registerUser } =
+    useAppContext();
 
   const toggleMember = () => {
-    setUser({ ...user, isRegistered: !user.isRegistered });
+    setNewUser({ ...newUser, isRegistered: !newUser.isRegistered });
   };
 
   // TODO: add useEffect to fetch user data from server
   // TODO: use global context to manage user state
 
   const handleChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setNewUser({ ...newUser, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const { name, email, password, isRegistered } = user;
+    const { name, email, password, isRegistered } = newUser;
     if (!email || !password || (!isRegistered && !name)) {
       displayAlert();
       return;
@@ -41,17 +44,25 @@ const Register = () => {
     registerUser({ name, email, password });
   };
 
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate('/');
+      }, 1500);
+    }
+  }, [user, navigate]);
+
   return (
     <section className='full-page'>
       <form className='form' onSubmit={handleSubmit}>
         <Logo />
-        <h3>{user.isRegistered ? 'Login' : 'Register'}</h3>
+        <h3>{newUser.isRegistered ? 'Login' : 'Register'}</h3>
         {showAlert && <Alert />}
-        {!user.isRegistered && (
+        {!newUser.isRegistered && (
           <FormRow
             type='text'
             name='name'
-            value={user.name}
+            value={newUser.name}
             handleChange={handleChange}
             autocomplete='name'
           />
@@ -59,14 +70,14 @@ const Register = () => {
         <FormRow
           type='email'
           name='email'
-          value={user.email}
+          value={newUser.email}
           handleChange={handleChange}
           autocomplete='email'
         />
         <FormRow
           type='password'
           name='password'
-          value={user.password}
+          value={newUser.password}
           handleChange={handleChange}
           autocomplete='current-password'
         />
@@ -75,12 +86,12 @@ const Register = () => {
           Submit
         </button>
         <p>
-          {user.isRegistered
+          {newUser.isRegistered
             ? "Don't have an account?"
             : 'Already have an account?'}
         </p>
         <button type='button' className='member-btn' onClick={toggleMember}>
-          {user.isRegistered ? 'Register' : 'Login'}
+          {newUser.isRegistered ? 'Register' : 'Login'}
         </button>
       </form>
     </section>
