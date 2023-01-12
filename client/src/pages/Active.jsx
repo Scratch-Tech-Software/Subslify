@@ -3,7 +3,9 @@ import FormCard from '../components/FormCard';
 import { Button } from '@mui/material';
 import SubCard from '../components/SubCard';
 import Title from '../components/Title';
+import moment from 'moment';
 import '../assets/styles/active.scss';
+import { useEffect } from 'react';
 
 const Active = () => {
   //had to install a JSON Server package to  https://www.npmjs.com/package/json-server
@@ -25,6 +27,12 @@ const Active = () => {
         //updating state to have the SubCard the first in the array and making unshifting the previous to after
 
         const subListBox = data.map((sub) => {
+          //reassign dates to the parsed version using moment to ensure proper formatting with in sub card
+
+          console.log('sub payment date', sub.name, sub.paymentDate);
+
+          console.log('sub activation date', sub.name, sub.activationDate);
+
           return (
             <div className='sub-card'>
               <SubCard
@@ -35,7 +43,7 @@ const Active = () => {
                 cost={sub.cost}
                 paymentDate={sub.paymentDate}
                 subscriptionType={sub.subscriptionType}
-                activiationDate={sub.activiationDate}
+                activationDate={sub.activationDate}
                 fetchData={fetchData}
               />
             </div>
@@ -45,6 +53,10 @@ const Active = () => {
         setSubList(() => [...subListBox]);
       });
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div className='active'>

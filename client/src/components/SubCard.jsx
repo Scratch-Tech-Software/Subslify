@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
 import { Paper, TextField, Button } from '@mui/material/';
+import FormRow from './FormRow.jsx';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import moment from 'moment';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import '../assets/styles/sub-card.scss';
 
 //Tree shake sub from props
@@ -10,20 +15,26 @@ const SubCard = ({
   cost,
   paymentDate,
   subscriptionType,
-  activiationDate,
+  activationDate,
   fetchData,
 }) => {
   const API_URL = 'http://localhost:3000/subs';
 
   const subInformation = {
-    subName: '',
-    subTier: '',
-    subCost: '',
-    subType: '',
+    subName: name,
+    subTier: tier,
+    subCost: cost,
+    subType: subscriptionType,
   };
 
   //state to handle form inputs
   const [inputs, setInputs] = useState(subInformation);
+
+  //for date picker
+  const [newPaymentDate, setNewPaymentDate] = useState(paymentDate);
+
+  //for date picker
+  const [newActivationDate, setNewActivationDate] = useState(activationDate);
 
   const handleChange = (e) => {
     //console logs to see state being updated
@@ -93,29 +104,54 @@ const SubCard = ({
   return (
     <Paper>
       <div className='subCardInput'>
-        <TextField label='Subscription Name' id='outlined-basic' value={name} />
-        <br></br>
-        <TextField label='Subscription Cost' id='outlined-basic' value={tier} />
-        <br></br>
-        <TextField label='Subscription Cost' id='outlined-basic' value={cost} />
-        <br></br>
-        <TextField
-          label='Subscription Payment Date'
-          id='outlined-basic'
-          value={paymentDate}
+        <FormRow
+          labelText='Subscription Name'
+          name='subName'
+          value={inputs.subName || ''}
+          handleChange={handleChange}
         />
-        <br></br>
-        <TextField
-          label='Subscription Type'
-          id='outlined-basic'
-          value={subscriptionType}
+        <FormRow
+          labelText='Subscription Tier'
+          name='subTier'
+          value={inputs.subTier || ''}
+          handleChange={handleChange}
         />
-        <br></br>
-        <TextField
-          label='Subscription Activation Date'
-          id='outlined-basic'
-          value={activiationDate}
+        <FormRow
+          labelText='Cost Per Month'
+          name='subCost'
+          value={inputs.subCost || ''}
+          handleChange={handleChange}
         />
+        <div className='formInputDate'>
+          <LocalizationProvider dateAdapter={AdapterMoment}>
+            <DatePicker
+              label='Date of Payment'
+              value={newPaymentDate}
+              onChange={(newDate) => {
+                setNewPaymentDate(newDate);
+              }}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
+        </div>
+        <FormRow
+          labelText='Type of Subscription'
+          name='subType'
+          value={inputs.subType || ''}
+          handleChange={handleChange}
+        />
+        <div className='formInputDate'>
+          <LocalizationProvider dateAdapter={AdapterMoment}>
+            <DatePicker
+              label='Activation Date'
+              value={newActivationDate}
+              onChange={(newDate) => {
+                setNewActivationDate(newDate);
+              }}
+              renderInput={(params) => <TextField {...params} />}
+            />
+          </LocalizationProvider>
+        </div>
         <Button>Edit</Button>
         <Button onClick={() => handleDelete(id)}>Delete</Button>
       </div>

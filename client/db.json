@@ -5,9 +5,9 @@
       "name": "Netflix",
       "tier": "Preimium",
       "cost": 100,
-      "paymentDate": "01/08/2023",
+      "paymentDate": "2023-01-04T05:00:00.000Z",
       "subscriptionType": "Personal",
-      "activiationDate": "12/08/2022"
+      "activationDate": "2023-01-04T05:00:00.000Z"
     },
     {
       "name": "ff",
@@ -15,8 +15,26 @@
       "cost": "te",
       "paymentDate": "2023-01-04T05:00:00.000Z",
       "subscriptionType": "ff",
-      "activiationDate": "2023-01-24T05:00:00.000Z",
+      "activationDate": "2023-01-24T05:00:00.000Z",
       "id": 2
+    },
+    {
+      "name": "Hulu",
+      "tier": "Star",
+      "cost": "20",
+      "paymentDate": "2023-01-22T05:00:00.000Z",
+      "subscriptionType": "Family",
+      "activationDate": "2022-01-10T05:00:00.000Z",
+      "id": 3
+    },
+    {
+      "name": "test",
+      "tier": "Start",
+      "cost": "45",
+      "paymentDate": "2023-01-31T05:00:00.000Z",
+      "subscriptionType": "fr",
+      "activationDate": "2023-01-24T05:00:00.000Z",
+      "id": 4
     }
   ]
 }
