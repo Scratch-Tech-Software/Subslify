@@ -13,9 +13,7 @@ const errorHandlerMiddleware = (err, req, res, next) => {
   }
   if (err.code && err.code === 11000) {
     defaultError.statusCode = StatusCodes.BAD_REQUEST;
-    defaultError.message = `Duplicate field value entered: ${Object.keys(
-      err.keyValue
-    )}`;
+    defaultError.message = 'User with this email already exists';
   }
 
   res.status(defaultError.statusCode).json({ message: defaultError.message });

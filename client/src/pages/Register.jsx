@@ -37,6 +37,7 @@ const Register = () => {
       console.log("already registered, let's login");
       return;
     }
+    console.log('register user', { name, email, password });
     registerUser({ name, email, password });
   };
 
