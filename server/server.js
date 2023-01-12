@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import 'express-async-errors';
 import userRoute from './routes/user.js';
+import indexRoute from './routes/index.js';
 
 // db and authenticateUser
 import connectDB from './db/connect.js';
@@ -12,9 +13,8 @@ dotenv.config({ path: '../.env' });
 
 const port = process.env.PORT || 5002;
 
-app.get('/', (req,res,next) => {
-  res.status(200).send(json({}))
-})
+app.use('/user', userRoute);
+app.use('/index', indexRoute);
 
 const start = async () => {
   try {

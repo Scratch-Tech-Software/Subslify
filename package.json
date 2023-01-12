@@ -30,7 +30,11 @@
   },
   "homepage": "https://github.com/Scratch-Tech-Software/Subslify#readme",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "passport": "^0.6.0",
+    "passport-google-oauth20": "^2.0.0"
+  },
   "devDependencies": {
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.6.0",
