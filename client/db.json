@@ -8,24 +8,6 @@
       "paymentDate": "01/08/2023",
       "subscriptionType": "Personal",
       "activiationDate": "12/08/2022"
-    },
-    {
-      "name": "test",
-      "tier": "test",
-      "cost": "25",
-      "paymentDate": "2023-01-11T05:00:00.000Z",
-      "subscriptionType": "test",
-      "activiationDate": "2023-01-16T05:00:00.000Z",
-      "id": 2
-    },
-    {
-      "name": "test2",
-      "tier": "test",
-      "cost": "25",
-      "paymentDate": "2023-01-24T05:00:00.000Z",
-      "subscriptionType": "ff",
-      "activiationDate": "2023-01-25T05:00:00.000Z",
-      "id": 3
     }
   ]
 }

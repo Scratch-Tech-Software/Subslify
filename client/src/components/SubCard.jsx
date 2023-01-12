@@ -4,13 +4,39 @@ import '../assets/styles/sub-card.scss';
 
 //Tree shake sub from props
 const SubCard = ({
+  id,
   name,
   tier,
   cost,
   paymentDate,
   subscriptionType,
   activiationDate,
+  fetchData,
 }) => {
+  const API_URL = 'http://localhost:3000/subs';
+  //Delete Data Method
+
+  const handleDelete = (subId) => {
+    const options = {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ subId }),
+    };
+
+    console.log(subId);
+
+    fetch(API_URL + `/${subId}`, options)
+      .then((data) => data.json())
+      .then((data) => {
+        console.log('this is the data returned from deletion', data);
+        //after we get a success response, we should grab all of the quests again
+
+        fetchData();
+      });
+  };
   //return a Paper/Box with the subscription information
   return (
     <Paper>
@@ -39,7 +65,7 @@ const SubCard = ({
           value={activiationDate}
         />
         <Button>Edit</Button>
-        <Button>Delete</Button>
+        <Button onClick={() => handleDelete(id)}>Delete</Button>
       </div>
     </Paper>
   );
