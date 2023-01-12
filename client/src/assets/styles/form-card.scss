@@ -1,0 +1,46 @@
+.form-card {
+    div.MuiPaper-root,
+    form {
+      height: 40rem;
+      width: 20rem;
+    }
+  
+    div.MuiPaper-root {
+      background-color: aliceblue;
+    }
+  
+    div.MuiFormControl-root {
+      padding-bottom: 10px;
+    }
+  
+    form {
+      padding: 1rem;
+    }
+  
+    div.MuiInputBase-input {
+      padding: 5rem;
+    }
+  
+    div.formInput .formInputDate {
+      padding-bottom: 4rem;
+      height: 0.5rem;
+      background: none;
+      border: none;
+    }
+  
+    div.formInputDate {
+      margin-bottom: 1rem;
+    }
+  
+    //MUI input field lengths
+    div.MuiInputBase-root {
+      width: 12rem;
+    }
+  
+    /* controls Button component */
+    button.MuiButton-root {
+      margin-top: 1rem;
+    }
+}
+  
+  

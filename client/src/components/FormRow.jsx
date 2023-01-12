@@ -10,10 +10,11 @@ const FormRow = ({
 }) => {
   return (
     <div className='form-row'>
-      <label htmlFor={name} className='form-label'>
+      {/* <label htmlFor={name} className='form-label'>
         {labelText ?? name}
-      </label>
-      <input
+      </label> */}
+
+      {/* <input
         type={type}
         value={value}
         name={name}
@@ -21,16 +22,16 @@ const FormRow = ({
         onChange={handleChange}
         className='form-input'
         autoComplete={autocomplete}
-      />
+      /> */}
 
       <TextField
-        label={labelText ?? name}
+        label={labelText}
         value={value}
         type={type}
         name={name}
         id='outlined-basic'
         onChange={handleChange}
-        className='form-input'
+        className='formInput'
         autoComplete={autocomplete}
       />
     </div>
