@@ -14,6 +14,7 @@ const initialState = {
   showAlert: false,
   alert: { type: '', message: '' },
   user: null,
+  token: null,
 };
 
 const AppContext = createContext();
@@ -37,8 +38,8 @@ const AppProvider = ({ children }) => {
     try {
       const response = await axios.post('/api/v1/auth/register', newUser);
       // console.log(response);
-      const { user } = response.data;
-      dispatch({ type: REGISTER_USER_SUCCESS, payload: { user } });
+      const { user, token } = response.data;
+      dispatch({ type: REGISTER_USER_SUCCESS, payload: { user, token } });
     } catch (error) {
       // console.error(error.response);
       dispatch({

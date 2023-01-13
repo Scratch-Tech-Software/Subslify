@@ -32,6 +32,7 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       user: action.payload.user,
+      token: action.payload.token,
       showAlert: true,
       alert: { type: 'success', msg: 'User registered successfully!' },
     };
