@@ -5,14 +5,9 @@ import { Active, Past, Summary, Trial, SharedLayout } from './pages/dashboard';
 const App = () => {
   return (
     <BrowserRouter>
-      <nav>
-        <Link to='/'>Subscription Dashboard</Link>
-        <Link to='/register'>Register</Link>
-        <Link to='/landing'>Landing Page</Link>
-      </nav>
       <Routes>
-        <Route path='/'>
-          <Route path='active' element={<Active />} />
+        <Route path='/' element={<SharedLayout />}>
+          <Route index element={<Active />} />
           <Route path='trial' element={<Trial />} />
           <Route path='past' element={<Past />} />
           <Route path='summary' element={<Summary />} />
