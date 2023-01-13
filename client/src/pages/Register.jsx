@@ -15,15 +15,12 @@ const Register = () => {
   const navigate = useNavigate();
   const [newUser, setNewUser] = useState(initialState);
 
-  const { user, isLoading, showAlert, displayAlert, registerUser } =
+  const { user, isLoading, showAlert, displayAlert, registerUser, loginUser } =
     useAppContext();
 
   const toggleMember = () => {
     setNewUser({ ...newUser, isRegistered: !newUser.isRegistered });
   };
-
-  // TODO: add useEffect to fetch user data from server
-  // TODO: use global context to manage user state
 
   const handleChange = (e) => {
     setNewUser({ ...newUser, [e.target.name]: e.target.value });
@@ -36,11 +33,12 @@ const Register = () => {
       displayAlert();
       return;
     }
+
     if (isRegistered) {
-      console.log("already registered, let's login");
+      loginUser({ email, password });
       return;
     }
-    console.log('register user', { name, email, password });
+    // console.log('register user', { name, email, password });
     registerUser({ name, email, password });
   };
 
