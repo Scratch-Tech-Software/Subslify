@@ -44,6 +44,15 @@
       "subscriptionType": "basic",
       "activationDate": "2023-01-20T05:00:00.000Z",
       "id": 5
+    },
+    {
+      "name": "Hulu",
+      "tier": "Basic",
+      "cost": "20",
+      "paymentDate": "2022-01-20T05:00:00.000Z",
+      "subscriptionType": "Family",
+      "activationDate": "2002-01-20T05:00:00.000Z",
+      "id": 6
     }
   ]
 }

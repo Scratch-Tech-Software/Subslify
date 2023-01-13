@@ -2,6 +2,7 @@ import { useState } from 'react';
 import FormCard from '../components/FormCard';
 import { Button } from '@mui/material';
 import SubCard from '../components/SubCard';
+import moment from 'moment';
 import Title from '../components/Title';
 import '../assets/styles/active.scss';
 import '../assets/styles/sub-card2.scss';
@@ -35,7 +36,7 @@ const Active = () => {
 
           return (
             <div>
-              <div className='sub-card'>
+              {/* <div className='sub-card'>
                 <SubCard
                   key={sub.id}
                   id={sub.id}
@@ -47,13 +48,24 @@ const Active = () => {
                   activationDate={sub.activationDate}
                   fetchData={fetchData}
                 />
-              </div>
+              </div> */}
 
               <div className='sub-card2'>
-                <div className='subType'>{sub.subscriptionType}</div>
-                <div className='subCost'>${sub.cost} per month</div>
-                <div className='subName'>{sub.name}</div>
-                {/* <div className='subActivation'>{sub.activationDate}</div> */}
+                <div className='subCardBackground'>
+                  <div className='subType'>{sub.subscriptionType}</div>
+                  <div className='subCost'>${sub.cost}/mo</div>
+                  <div className='subName'>{sub.name}</div>
+                  <div className='paymentDate'>
+                    Billing Date: {moment(sub.paymentDate).format('MM/DD/YYYY')}
+                  </div>
+                  <div className='activationDate'>
+                    Activation Date:{' '}
+                    {moment(sub.activationDate).format('MM/DD/YYYY')}
+                  </div>
+                  <div className='email'>Email: theaxman123@gmail.com</div>
+                  <button>Edit</button>
+                  <button>Delete</button>
+                </div>
               </div>
             </div>
           );
