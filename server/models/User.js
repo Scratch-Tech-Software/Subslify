@@ -25,6 +25,7 @@ const UserSchema = new Schema({
     required: [true, 'Password is required'],
     minLength: 6,
     maxLength: 30,
+    select: false,
   },
 });
 
