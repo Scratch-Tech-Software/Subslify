@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import 'express-async-errors';
+import morgan from 'morgan';
 
 // db and authenticateUser
 import connectDB from './db/connect.js';
@@ -18,6 +19,10 @@ dotenv.config({ path: '../.env' });
 
 const app = express();
 const port = process.env.PORT || 5002;
+
+if (process.env.NODE_ENV !== 'production') {
+  app.use(morgan('dev'));
+}
 
 app.use(express.json());
 
