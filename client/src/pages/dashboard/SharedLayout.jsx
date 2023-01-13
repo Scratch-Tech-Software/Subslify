@@ -1,13 +1,21 @@
 import { Outlet, Link } from 'react-router-dom';
+import { Navbar, LargeSidebar, SmallSidebar } from '../../components';
+import '../../assets/styles/shared-layout.scss';
 
 const SharedLayout = () => {
   return (
-    <div>
-      <nav>
-        <Link to='active'>Active Subscriptions</Link>
-        <Link to='trial'>Trial Subscriptions</Link>
-      </nav>
-      <Outlet />
+    <div className='shared-layout'>
+      <div className='dashboard'>
+        <SmallSidebar />
+        <LargeSidebar />
+
+        <div>
+          <Navbar />
+          <div className='dashboard-page'>
+            <Outlet />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
