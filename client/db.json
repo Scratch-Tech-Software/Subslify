@@ -4,7 +4,7 @@
       "id": 1,
       "name": "Netflix",
       "tier": "Preimium",
-      "cost": 100,
+      "cost": "15",
       "paymentDate": "2023-01-04T05:00:00.000Z",
       "subscriptionType": "Personal",
       "activationDate": "2023-01-04T05:00:00.000Z"
@@ -13,7 +13,7 @@
       "id": 2,
       "name": "Hulu",
       "tier": "test",
-      "cost": "test",
+      "cost": "20",
       "paymentDate": "1992-01-11T05:00:00.000Z",
       "subscriptionType": "Family",
       "activationDate": "1992-01-11T05:00:00.000Z"

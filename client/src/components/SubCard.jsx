@@ -128,6 +128,7 @@ const SubCard = ({
             value={inputs.subCost || ''}
             handleChange={handleChange}
           />
+          /mo
         </div>
 
         <div className='subName'>

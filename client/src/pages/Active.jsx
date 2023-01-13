@@ -49,24 +49,6 @@ const Active = () => {
                   fetchData={fetchData}
                 />
               </div>
-
-              {/* <div className='sub-card2'>
-                <div className='subCardBackground'>
-                  <div className='subType'>{sub.subscriptionType}</div>
-                  <div className='subCost'>${sub.cost}/mo</div>
-                  <div className='subName'>{sub.name}</div>
-                  <div className='paymentDate'>
-                    Billing Date: {moment(sub.paymentDate).format('MM/DD/YYYY')}
-                  </div>
-                  <div className='activationDate'>
-                    Activation Date: {moment(sub.activationDate).format('MM/DD/YYYY')}
-                  </div>
-                  <div className='email'>Email: theaxman123@gmail.com</div>
-                  <div className='cardInfo'>Card on file: Visa XXX136</div>
-                  <button>Edit</button>
-                  <button>Delete</button>
-                </div>
-              </div> */}
             </div>
           );
         });
@@ -84,6 +66,7 @@ const Active = () => {
       <Title title='Subscriptions' />
       {/* INSERT nav bar here! */}
       <nav class='crumbs'>
+        <h1>INSERT NAV BAR HERE!</h1>
         <ol>
           <li class='crumb'>
             <a href='#'>item1</a>
