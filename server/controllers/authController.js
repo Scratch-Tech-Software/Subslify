@@ -1,6 +1,10 @@
 import User from '../models/User.js';
 import { StatusCodes } from 'http-status-codes';
-import { BadRequestError, CustomAPIError } from '../errors/index.js';
+import {
+  BadRequestError,
+  CustomAPIError,
+  UnauthenticatedError,
+} from '../errors/index.js';
 
 const register = async (req, res) => {
   const { name, email, password } = req.body;
@@ -24,7 +28,24 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  res.send('Login');
+  const { email, password } = req.body;
+  if (!email || !password) {
+    throw new BadRequestError('Email and password are required');
+  }
+
+  const user = await User.findOne({ email }).select('+password');
+  if (!user) {
+    throw new UnauthenticatedError('Invalid credentials');
+  }
+
+  const isPaswordCorrect = await user.comparePasswords(password);
+  if (!isPaswordCorrect) {
+    throw new UnauthenticatedError('Invalid credentials');
+  }
+
+  const token = user.createJWT();
+  const userData = { name: user.name, email: user.email };
+  res.status(StatusCodes.OK).json({ userData, token });
 };
 
 const updateUser = async (req, res) => {
