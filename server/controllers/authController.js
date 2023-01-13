@@ -45,7 +45,7 @@ const login = async (req, res) => {
 
   const token = user.createJWT();
   const userData = { name: user.name, email: user.email };
-  res.status(StatusCodes.OK).json({ userData, token });
+  res.status(StatusCodes.OK).json({ user: userData, token });
 };
 
 const updateUser = async (req, res) => {
