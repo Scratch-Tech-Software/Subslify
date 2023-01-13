@@ -29,5 +29,8 @@
     "nodemon": "^2.0.20",
     "validator": "^13.7.0"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "morgan": "^1.10.0"
+  }
 }
