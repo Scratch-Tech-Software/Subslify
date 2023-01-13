@@ -1,6 +1,7 @@
 import { Schema, model } from 'mongoose';
 import validator from 'validator';
 import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 const UserSchema = new Schema({
   name: {
@@ -26,6 +27,17 @@ const UserSchema = new Schema({
     maxLength: 30,
   },
 });
+
+UserSchema.methods.createJWT = function () {
+  const token = jwt.sign(
+    {
+      userId: this._id,
+    },
+    process.env.JWT_SECRET_KEY,
+    { expiresIn: process.env.JWT_TOKEN_EXPIRATION_TIME }
+  );
+  return token;
+};
 
 UserSchema.pre('save', async function (next) {
   const salt = await bcrypt.genSalt(10);
