@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import FormCard from '../components/FormCard';
 import { Button } from '@mui/material';
 import SubCard from '../components/SubCard';
+import SearchBar from '../components/SearchBar';
 import '../assets/styles/active.scss';
 
 const Active = () => {
@@ -50,7 +51,7 @@ const Active = () => {
       <h3>Subscriptions</h3>
       {/* render the current state of subList. At the beginning just a form card. then it will be an array of Sub Cards */}
       <div className='active-cards'>
-        {subList}
+        <SearchBar/>
         <FormCard setSubList={setSubList} fetchData={fetchData} />
         <Button onClick={fetchData}>Get Some Data</Button>
       </div>

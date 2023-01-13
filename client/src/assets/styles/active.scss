@@ -1,4 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fredoka+One&display=swap');
+
 .active {
+  h3{
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    font-family: 'Bebas Neue', cursive;
+    color: #0B4F6C;
+    font-size: 30px;
+    text-align: center;
+  }
+
   .active-cards {
     display: flex;
     flex-direction: row;

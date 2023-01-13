@@ -3,6 +3,8 @@ import './index.js';
 import { BrowserRouter, BrowserRouter as Router, Routes, Route, Switch, Link } from 'react-router-dom';
 import { Active, Register, Landing, Error, Dashboard } from './pages';
 import NavBar from './NavBar';
+import Summary from './pages/summary.jsx';
+import PastSubs from './pages/PastSubs.jsx';
 
 const App = () => {
   return (
@@ -15,6 +17,8 @@ const App = () => {
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/register' element={<Register />} />
           <Route path='/landing' element={<Landing />} />
+          <Route path='/summary' element={<Summary />} />
+          <Route path='/pastsubscriptions' element={<PastSubs />} />
           <Route path='*' element={<Error />} />
         </Routes>
       </div>

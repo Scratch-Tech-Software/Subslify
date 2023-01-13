@@ -13,6 +13,7 @@
     top: 0;
     left: 1rem;
     padding-top: 1rem;
+    
 }
 
 .navbar a{
@@ -23,6 +24,7 @@
     background-color: transparent;
     display: float;
     padding: 20px;
+    
 }
 
 .navbar .title {
@@ -65,3 +67,8 @@
     padding: 20px;
 }
 
+.navbar .signout{
+    bottom: 2rem;
+    left: 2rem;
+    position: fixed;
+}

@@ -8,6 +8,15 @@
       "paymentDate": "01/08/2023",
       "subscriptionType": "Personal",
       "activiationDate": "12/08/2022"
+    },
+    {
+      "name": "Hulu",
+      "tier": "Plus",
+      "cost": "88",
+      "paymentDate": "2023-01-19T08:00:00.000Z",
+      "subscriptionType": "Entertainment",
+      "activiationDate": "2023-01-19T08:00:00.000Z",
+      "id": 2
     }
   ]
 }
