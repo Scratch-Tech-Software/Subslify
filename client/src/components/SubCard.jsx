@@ -82,15 +82,21 @@ const SubCard = ({
      * then add to OnClick in button below
      */
     const options = {
-      method: 'DELETE',
+      method: 'PUT',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ subId }),
+      body: JSON.stringify({
+        id,
+        name: inputs.subName,
+        tier: inputs.subTier,
+        cost: inputs.subCost,
+        paymentDate,
+        subscriptionType: inputs.subType,
+        activationDate,
+      }),
     };
-
-    console.log(subId);
 
     fetch(API_URL + `/${subId}`, options)
       .then((data) => data.json())
@@ -103,27 +109,45 @@ const SubCard = ({
   };
   //return a Paper/Box with the subscription information
   return (
-    <Paper>
-      <div className='subCardInput'>
-        <FormRow
-          labelText='Subscription Name'
-          name='subName'
-          value={inputs.subName || ''}
-          handleChange={handleChange}
-        />
-        <FormRow
-          labelText='Subscription Tier'
-          name='subTier'
-          value={inputs.subTier || ''}
-          handleChange={handleChange}
-        />
-        <FormRow
-          labelText='Cost Per Month'
-          name='subCost'
-          value={inputs.subCost || ''}
-          handleChange={handleChange}
-        />
-        <div className='formInputDate'>
+    <div className='sub-card2'>
+      <div className='subCardBackground'>
+        <div className='subType'>
+          <FormRow
+            labelText='Type of Subscription'
+            name='subType'
+            value={inputs.subType || ''}
+            handleChange={handleChange}
+          />
+        </div>
+        <div className='subCost'>
+          $
+          <FormRow
+            labelText='Cost Per Month'
+            price={true}
+            name='subCost'
+            value={inputs.subCost || ''}
+            handleChange={handleChange}
+          />
+        </div>
+
+        <div className='subName'>
+          <FormRow
+            labelText='Subscription Name'
+            name='subName'
+            value={inputs.subName || ''}
+            handleChange={handleChange}
+          />
+        </div>
+
+        <div className='paymentDate'>
+          Billing Date: {moment(paymentDate).format('MM/DD/YYYY')}
+        </div>
+
+        <div className='activationDate'>
+          Activation Date: {moment(activationDate).format('MM/DD/YYYY')}
+        </div>
+
+        {/* <div className='formInputDate'>
           <LocalizationProvider dateAdapter={AdapterMoment}>
             <DatePicker
               label='Date of Payment'
@@ -135,12 +159,7 @@ const SubCard = ({
             />
           </LocalizationProvider>
         </div>
-        <FormRow
-          labelText='Type of Subscription'
-          name='subType'
-          value={inputs.subType || ''}
-          handleChange={handleChange}
-        />
+
         <div className='formInputDate'>
           <LocalizationProvider dateAdapter={AdapterMoment}>
             <DatePicker
@@ -152,11 +171,14 @@ const SubCard = ({
               renderInput={(params) => <TextField {...params} />}
             />
           </LocalizationProvider>
-        </div>
-        <Button>Edit</Button>
+        </div> */}
+
+        <div className='email'>Email: theaxman123@gmail.com</div>
+        <div className='cardInfo'>Card on file: Visa XXX136</div>
+        <Button onClick={() => handleEdit(id)}>Edit</Button>
         <Button onClick={() => handleDelete(id)}>Delete</Button>
       </div>
-    </Paper>
+    </div>
   );
 };
 

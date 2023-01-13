@@ -1,4 +1,3 @@
-
 const FormRow = ({
   type,
   name,
@@ -6,14 +5,32 @@ const FormRow = ({
   handleChange,
   autocomplete = 'on',
   labelText,
+  price,
 }) => {
+  if (price) {
+    return (
+      <div className='form-row'>
+        <input
+          type={type}
+          value={value}
+          name={name}
+          id={name}
+          onChange={handleChange}
+          className='form-input'
+          autoComplete={autocomplete}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className='form-row'>
-      <label htmlFor={name} className='form-label'>
+      {/* <label htmlFor={name} className='form-label'>
         {labelText ?? name}
-      </label>
+      </label> */}
 
       <input
+        placeholder={labelText}
         type={type}
         value={value}
         name={name}

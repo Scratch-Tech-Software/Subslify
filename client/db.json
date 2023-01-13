@@ -10,49 +10,13 @@
       "activationDate": "2023-01-04T05:00:00.000Z"
     },
     {
-      "name": "ff",
-      "tier": "ff",
-      "cost": "te",
-      "paymentDate": "2023-01-04T05:00:00.000Z",
-      "subscriptionType": "ff",
-      "activationDate": "2023-01-24T05:00:00.000Z",
-      "id": 2
-    },
-    {
+      "id": 2,
       "name": "Hulu",
-      "tier": "Star",
-      "cost": "20",
-      "paymentDate": "2023-01-22T05:00:00.000Z",
+      "tier": "test",
+      "cost": "test",
+      "paymentDate": "1992-01-11T05:00:00.000Z",
       "subscriptionType": "Family",
-      "activationDate": "2022-01-10T05:00:00.000Z",
-      "id": 3
-    },
-    {
-      "name": "test",
-      "tier": "Start",
-      "cost": "45",
-      "paymentDate": "2023-01-31T05:00:00.000Z",
-      "subscriptionType": "fr",
-      "activationDate": "2023-01-24T05:00:00.000Z",
-      "id": 4
-    },
-    {
-      "name": "Hulu",
-      "tier": "Star",
-      "cost": "20",
-      "paymentDate": "2023-01-20T05:00:00.000Z",
-      "subscriptionType": "basic",
-      "activationDate": "2023-01-20T05:00:00.000Z",
-      "id": 5
-    },
-    {
-      "name": "Hulu",
-      "tier": "Basic",
-      "cost": "20",
-      "paymentDate": "2022-01-20T05:00:00.000Z",
-      "subscriptionType": "Family",
-      "activationDate": "2002-01-20T05:00:00.000Z",
-      "id": 6
+      "activationDate": "1992-01-11T05:00:00.000Z"
     }
   ]
 }

@@ -36,7 +36,7 @@ const Active = () => {
 
           return (
             <div>
-              {/* <div className='sub-card'>
+              <div className='sub-card'>
                 <SubCard
                   key={sub.id}
                   id={sub.id}
@@ -48,9 +48,9 @@ const Active = () => {
                   activationDate={sub.activationDate}
                   fetchData={fetchData}
                 />
-              </div> */}
+              </div>
 
-              <div className='sub-card2'>
+              {/* <div className='sub-card2'>
                 <div className='subCardBackground'>
                   <div className='subType'>{sub.subscriptionType}</div>
                   <div className='subCost'>${sub.cost}/mo</div>
@@ -66,7 +66,7 @@ const Active = () => {
                   <button>Edit</button>
                   <button>Delete</button>
                 </div>
-              </div>
+              </div> */}
             </div>
           );
         });

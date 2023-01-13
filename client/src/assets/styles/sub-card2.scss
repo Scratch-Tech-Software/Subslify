@@ -15,6 +15,12 @@
   left: 15px;
   top: 37px;
 
+  input {
+    background: none;
+    border: none;
+    width: fit-content;
+  }
+
   .subCardBackground {
     box-sizing: border-box;
 
@@ -41,6 +47,10 @@
     justify-content: center;
 
     .subType {
+      input {
+        color: white;
+        max-width: 5rem;
+      }
       /* Subscription type */
       box-sizing: border-box;
 
@@ -79,6 +89,10 @@
       /* Pricing */
 
       /* Auto layout */
+      input {
+        max-width: 2rem;
+        color: #0b4f6c;
+      }
 
       display: flex;
       flex-direction: row;
@@ -115,6 +129,10 @@
     }
 
     .subName {
+      input {
+        max-width: 5.5rem;
+        color: #0b4f6c;
+      }
       // align-items: flex-end;
       position: relative;
       width: 97px;
