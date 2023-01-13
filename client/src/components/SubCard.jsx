@@ -6,6 +6,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import moment from 'moment';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import '../assets/styles/sub-card.scss';
+import '../assets/styles/sub-card2.scss';
 
 //Tree shake sub from props
 const SubCard = ({

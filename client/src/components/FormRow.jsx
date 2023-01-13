@@ -1,4 +1,3 @@
-import { TextField } from '@mui/material/';
 
 const FormRow = ({
   type,
@@ -10,11 +9,11 @@ const FormRow = ({
 }) => {
   return (
     <div className='form-row'>
-      {/* <label htmlFor={name} className='form-label'>
+      <label htmlFor={name} className='form-label'>
         {labelText ?? name}
-      </label> */}
+      </label>
 
-      {/* <input
+      <input
         type={type}
         value={value}
         name={name}
@@ -22,9 +21,9 @@ const FormRow = ({
         onChange={handleChange}
         className='form-input'
         autoComplete={autocomplete}
-      /> */}
+      />
 
-      <TextField
+      {/* <TextField
         label={labelText}
         value={value}
         type={type}
@@ -33,7 +32,7 @@ const FormRow = ({
         onChange={handleChange}
         className='formInput'
         autoComplete={autocomplete}
-      />
+      /> */}
     </div>
   );
 };

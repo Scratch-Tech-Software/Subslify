@@ -59,10 +59,10 @@ const Active = () => {
                     Billing Date: {moment(sub.paymentDate).format('MM/DD/YYYY')}
                   </div>
                   <div className='activationDate'>
-                    Activation Date:{' '}
-                    {moment(sub.activationDate).format('MM/DD/YYYY')}
+                    Activation Date: {moment(sub.activationDate).format('MM/DD/YYYY')}
                   </div>
                   <div className='email'>Email: theaxman123@gmail.com</div>
+                  <div className='cardInfo'>Card on file: Visa XXX136</div>
                   <button>Edit</button>
                   <button>Delete</button>
                 </div>
