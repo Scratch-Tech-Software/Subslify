@@ -6,7 +6,7 @@ function passportFeature (passport) {
   passport.use(new GoogleStrategy({
     clientID: process.env['GOOGLE_CLIENT_ID'],
     clientSecret: process.env['GOOGLE_CLIENT_SECRET'],
-    callbackURL: '/auth/google/callback'
+    callbackURL: 'http://localhost:5002/auth/google/callback'
   },
   function(accessToken, refreshToken, profile, cb) {
     const {id, name, email } = profile;

@@ -12,9 +12,9 @@ app.use(express.json());
 dotenv.config({ path: '../.env' });
 
 const port = process.env.PORT || 5002;
-
-app.use('/user', userRoute);
 app.use('/index', indexRoute);
+app.use('/user', userRoute);
+
 
 const start = async () => {
   try {
