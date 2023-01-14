@@ -40,7 +40,7 @@
 
   /* fonts  */
   --headingFont: 'Fredoka One', Sans-Serif;
-  --bodyFont: Sans-Serif;
+  --bodyFont: 'Fredoka One', Sans-Serif;
   --small-text: 0.875rem;
   --extra-small-text: 0.7em;
   /* rest of the vars */
