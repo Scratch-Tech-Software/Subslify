@@ -6,7 +6,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import moment from 'moment';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import '../assets/styles/sub-card2.scss';
-
+import { useAppContext } from '../context/appContext';
 //Tree shake sub from props
 const SubCard = ({
   id,
@@ -106,6 +106,7 @@ const SubCard = ({
         fetchData();
       });
   };
+  const { user } = useAppContext();
   //return a Paper/Box with the subscription information
   return (
     <div className='sub-card2'>
@@ -173,7 +174,7 @@ const SubCard = ({
           </LocalizationProvider>
         </div> */}
 
-        <div className='email'>Email: theaxman123@gmail.com</div>
+        <div className='email'>Email: {user.email}</div>
         <div className='cardInfo'>Card on file: Visa XXX136</div>
         <Button onClick={() => handleEdit(id)}>Edit</Button>
         <Button onClick={() => handleDelete(id)}>Delete</Button>

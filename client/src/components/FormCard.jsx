@@ -108,7 +108,7 @@ const FormCard = ({ fetchData }) => {
           />
 
           <MUFormRowCard
-            labelText='Subscription Type'
+            labelText='Subscription Category'
             name='subType'
             value={inputs.subType || ''}
             handleChange={handleChange}
