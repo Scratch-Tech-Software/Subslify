@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Logo, FormRow, Alert } from '../components';
 import { useAppContext } from '../context/appContext';
 import { useNavigate } from 'react-router-dom';
+import '../assets/styles/form.scss';
 
 const initialState = {
   name: '',
@@ -51,7 +52,7 @@ const Register = () => {
   }, [user, navigate]);
 
   return (
-    <section className='full-page'>
+    <section className='full-page register'>
       <form className='form' onSubmit={handleSubmit}>
         <Logo />
         <h3>{newUser.isRegistered ? 'Login' : 'Register'}</h3>
