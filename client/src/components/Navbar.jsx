@@ -17,7 +17,7 @@ const Navbar = () => {
         </button>
         <div>
           <Logo />
-          <h3>Active Subscriptions</h3>
+          <h3>Subslify</h3>
         </div>
 
         <div className='btn-container'>

@@ -23,7 +23,7 @@ const initialState = {
   alert: { type: '', message: '' },
   user: user ? JSON.parse(user) : null,
   token: token,
-  showSidebar: false,
+  showSidebar: true,
 };
 
 const AppContext = createContext();
