@@ -1,7 +1,6 @@
 .active {
   display: grid;
-  border: solid 1px black;
-  justify-items: center;
+
   grid-template-columns: repeat(200px, 5);
   grid-template-rows: auto;
   grid-template-areas:
@@ -10,6 +9,7 @@
     'sidebar footer footer footer footer';
 
   column-gap: 10px;
+
   h1 {
     grid-area: header;
   }
@@ -19,8 +19,6 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-
-    
   }
 
   nav {

@@ -13,8 +13,8 @@
   --primary-200: #87eaf2;
   --primary-300: #54d1db;
   --primary-400: #38bec9;
-  --primary-500: #2cb1bc;
-  --primary-600: #14919b;
+  --primary-500: #0b4f6c;
+  --primary-600: #0b4f6c;
   --primary-700: #0e7c86;
   --primary-800: #0a6c74;
   --primary-900: #044e54;
@@ -45,7 +45,7 @@
   --extra-small-text: 0.7em;
   /* rest of the vars */
   --backgroundColor: var(--grey-100);
-  --textColor: var(--grey-900);
+  --textColor: #0b4f6c;
   --borderRadius: 0.25rem;
   --letterSpacing: 1px;
   --transition: 0.3s ease-in-out all;
@@ -262,8 +262,7 @@ ul {
 }
 
 nav img {
-  height: 3rem;
-  margin-right: 1rem;
+  height: 10rem;
 }
 
 .landing .page {
