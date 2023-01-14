@@ -2,7 +2,6 @@ import { useState } from 'react';
 import FormCard from '../components/FormCard';
 import { Button } from '@mui/material';
 import SubCard from '../components/SubCard';
-import moment from 'moment';
 import Title from '../components/Title';
 import '../assets/styles/active.scss';
 import '../assets/styles/sub-card2.scss';
@@ -82,7 +81,7 @@ const Active = () => {
       <div className='active-cards'>
         {subList}
         <FormCard setSubList={setSubList} fetchData={fetchData} />
-        <Button onClick={fetchData}>Get Some Data</Button>
+        {/* <Button onClick={fetchData}>Get Some Data</Button> */}
       </div>
     </div>
   );

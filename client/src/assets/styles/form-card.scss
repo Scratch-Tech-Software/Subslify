@@ -1,8 +1,13 @@
 .form-card {
   div.MuiPaper-root,
   form {
-    height: 40rem;
-    width: 20rem;
+    width: 324px;
+    height: 352px;
+    margin-top: 3rem;
+  }
+
+  button {
+    margin: none;
   }
 
   div.MuiPaper-root {
@@ -29,7 +34,7 @@
   }
 
   div.formInputDate {
-    margin-bottom: 1rem;
+    // margin-bottom: 1rem;
   }
 
   //MUI input field lengths
@@ -39,6 +44,6 @@
 
   /* controls Button component */
   button.MuiButton-root {
-    margin-top: 1rem;
+    margin: none;
   }
 }

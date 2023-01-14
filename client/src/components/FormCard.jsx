@@ -66,6 +66,7 @@ const FormCard = ({ fetchData }) => {
     fetch(API_URL, options)
       .then((data) => data.json())
       .then((data) => {
+        
         setInputs((prevState) => ({
           ...prevState,
           subName: '',
