@@ -1,4 +1,4 @@
-const FormRow = ({
+const MUFormRowCard = ({
   type,
   name,
   value,
@@ -10,7 +10,12 @@ const FormRow = ({
   if (price) {
     return (
       <div className='form-row'>
+        <label htmlFor={name} className='form-label'>
+          {labelText ?? name}
+        </label>
+
         <input
+        placeholder="$$$"
           type={type}
           value={value}
           name={name}
@@ -30,7 +35,7 @@ const FormRow = ({
       </label>
 
       <input
-        placeholder={labelText}
+        placeholder='Enter Information Here'
         type={type}
         value={value}
         name={name}
@@ -53,4 +58,4 @@ const FormRow = ({
     </div>
   );
 };
-export default FormRow;
+export default MUFormRowCard;

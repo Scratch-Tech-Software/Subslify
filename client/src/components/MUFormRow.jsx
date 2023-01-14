@@ -1,4 +1,4 @@
-const FormRow = ({
+const MUFormRow = ({
   type,
   name,
   value,
@@ -25,9 +25,9 @@ const FormRow = ({
 
   return (
     <div className='form-row'>
-      <label htmlFor={name} className='form-label'>
+      {/* <label htmlFor={name} className='form-label'>
         {labelText ?? name}
-      </label>
+      </label> */}
 
       <input
         placeholder={labelText}
@@ -53,4 +53,4 @@ const FormRow = ({
     </div>
   );
 };
-export default FormRow;
+export default MUFormRow;

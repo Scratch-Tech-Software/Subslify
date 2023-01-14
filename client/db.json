@@ -1,0 +1,22 @@
+{
+  "subs": [
+    {
+      "id": 1,
+      "name": "Hulu",
+      "tier": "Preimium",
+      "cost": "15",
+      "paymentDate": "2023-01-04T05:00:00.000Z",
+      "subscriptionType": "Personal",
+      "activationDate": "2023-01-04T05:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Netflix",
+      "tier": "test",
+      "cost": "20",
+      "paymentDate": "1992-01-11T05:00:00.000Z",
+      "subscriptionType": "Family",
+      "activationDate": "1992-01-11T05:00:00.000Z"
+    }
+  ]
+}

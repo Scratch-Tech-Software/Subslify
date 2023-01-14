@@ -1,0 +1,52 @@
+.form-card {
+  div.MuiPaper-root,
+  form {
+    width: 324px;
+    height: 400px;
+    margin-top: 3rem;
+  }
+
+  button {
+    margin: none;
+  }
+
+  div.MuiPaper-root {
+    background: #e1efe6;
+  }
+
+  div.MuiFormControl-root {
+    display: flex;
+    align-content: space-around;
+  }
+
+  form {
+    padding: 1rem;
+  }
+
+  div.MuiInputBase-input {
+    padding: 5rem;
+  }
+
+  div.formInput .formInputDate {
+    padding-bottom: 4rem;
+    height: 0.5rem;
+    background: none;
+    border: none;
+  }
+
+  div.formInputDate {
+    margin-bottom: 0.7rem;
+  }
+
+  //MUI input field lengths
+  div.MuiInputBase-root {
+    width: 12rem;
+  }
+
+  /* controls Button component */
+  button.MuiButton-root {
+    margin-top: 1rem;
+    background: #ffa630;
+    color: #0b4f6c;
+  }
+}
