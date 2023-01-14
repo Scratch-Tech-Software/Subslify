@@ -1,4 +1,7 @@
 .form-card {
+  label {
+    color: #0b4f6c;
+  }
   div.MuiPaper-root,
   form {
     width: 324px;
@@ -40,7 +43,9 @@
 
   //MUI input field lengths
   div.MuiInputBase-root {
-    width: 12rem;
+    width: 10rem;
+    height: 2rem;
+    background: white;
   }
 
   /* controls Button component */
