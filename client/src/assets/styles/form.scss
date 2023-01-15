@@ -1,9 +1,10 @@
 /* form */
+// TODO review form styles, remove unused styles, refactor
 .register {
   .form {
     width: 90vw;
     max-width: var(--fixed-width);
-    background: var(--white);
+    background: #e1efe6;
     border-radius: var(--borderRadius);
     box-shadow: var(--shadow-2);
     padding: 2rem 2.5rem;
@@ -28,7 +29,7 @@
     width: 100%;
     padding: 0.375rem 0.75rem;
     border-radius: var(--borderRadius);
-    background: var(--backgroundColor);
+    background: white;
     border: 1px solid var(--grey-200);
   }
   .form-input,

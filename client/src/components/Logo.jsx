@@ -1,4 +1,4 @@
-import favicon from '../assets/images/logo.png';
+import favicon from '../assets/images/logo.svg';
 
 const Logo = () => {
   return (

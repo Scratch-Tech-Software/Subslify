@@ -1,4 +1,6 @@
 .landing-page {
+  background-color: #e1efe6;
+  color: #0b4f6c;
   nav {
     width: var(--fluid-width);
     max-width: var(--max-width);
@@ -20,7 +22,7 @@
     }
   }
   p {
-    color: var(--grey-600);
+    color: #0b4f6c;
   }
   .main-img {
     display: none;
