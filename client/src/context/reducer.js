@@ -14,6 +14,7 @@ import {
 import { initialState } from './appContext';
 
 // TODO: Refactor this to use a switch statement
+// TODO: Refactor displayAlert to give more control over the alert message
 
 const reducer = (state, action) => {
   if (action.type === DISPLAY_ALERT) {
