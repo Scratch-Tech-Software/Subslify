@@ -49,7 +49,29 @@ const login = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  res.send('Update User');
+  const { name, email } = req.body;
+
+  if (!name) {
+    throw new BadRequestError('Please provide a name');
+  }
+  if (!email) {
+    throw new BadRequestError('Please provide an email');
+  }
+
+  const user = await User.findById(req.user.userId);
+  if (!user) {
+    throw new UnauthenticatedError('User not found');
+  }
+
+  user.name = name;
+  user.email = email;
+  await user.save();
+
+  const userData = { name: user.name, email: user.email };
+
+  const token = user.createJWT();
+
+  res.status(StatusCodes.OK).json({ user: userData, token });
 };
 
 export { register, login, updateUser };
