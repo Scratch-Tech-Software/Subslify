@@ -1,28 +1,32 @@
+import { ImProfile } from 'react-icons/im';
+
 const links = [
   {
     id: 1,
-    text: 'Active Subscriptions',
+    text: 'Summary',
     path: '/',
   },
   {
     id: 2,
-    text: 'Error',
-    path: '/error',
+    text: 'Active Subscriptions',
+    path: '/active',
   },
   {
     id: 3,
-    text: 'Summary',
-    path: '/summary',
-  },
-  {
-    id: 4,
     text: 'Trial Subscriptions',
     path: '/trial',
   },
   {
-    id: 5,
+    id: 4,
     text: 'Past Subscriptions',
     path: '/past',
+  },
+
+  {
+    id: 5,
+    text: 'Profile',
+    path: '/profile',
+    icon: <ImProfile />,
   },
 ];
 

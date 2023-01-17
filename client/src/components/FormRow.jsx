@@ -2,6 +2,7 @@ const FormRow = ({
   type,
   name,
   value,
+  placeholder = '',
   handleChange,
   autocomplete = 'on',
   labelText,
@@ -16,6 +17,7 @@ const FormRow = ({
         value={value}
         name={name}
         id={name}
+        placeholder={placeholder}
         onChange={handleChange}
         className='form-input'
         autoComplete={autocomplete}

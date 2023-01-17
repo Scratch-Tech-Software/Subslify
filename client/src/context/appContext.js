@@ -32,8 +32,11 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // TODO: Refactor displayAlert to give more control over the alert message
-  const displayAlert = () => {
-    dispatch({ type: DISPLAY_ALERT });
+  const displayAlert = (message) => {
+    dispatch({
+      type: DISPLAY_ALERT,
+      payload: { message: message || 'Unexpected Error' },
+    });
     clearAlert();
   };
 
@@ -68,7 +71,7 @@ const AppProvider = ({ children }) => {
     } catch (error) {
       dispatch({
         type: REGISTER_USER_ERROR,
-        payload: { msg: error.response.data.message },
+        payload: { message: error.response.data.message },
       });
     }
     clearAlert();
@@ -89,7 +92,7 @@ const AppProvider = ({ children }) => {
     } catch (error) {
       dispatch({
         type: LOGIN_USER_ERROR,
-        payload: { msg: error.message || error.response?.data?.message },
+        payload: { message: error.message || error.response?.data?.message },
       });
     }
     clearAlert();
@@ -98,6 +101,12 @@ const AppProvider = ({ children }) => {
   const logoutUser = () => {
     dispatch({ type: LOGOUT_USER });
     removeUserFromLocalStorage();
+  };
+
+  const updateUser = async (currentUser) => {
+    console.log({ currentUser });
+    // dispatch({ type: UPDATE_USER, payload: { user } });
+    // addUserToLocalStorage(user);
   };
 
   const toggleSidebar = () => {
