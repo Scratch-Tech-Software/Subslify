@@ -62,6 +62,7 @@ const Register = () => {
             type='text'
             name='name'
             value={newUser.name}
+            placeholder='Enter your name'
             handleChange={handleChange}
             autocomplete='name'
           />
@@ -70,6 +71,7 @@ const Register = () => {
           type='email'
           name='email'
           value={newUser.email}
+          placeholder='Enter your email'
           handleChange={handleChange}
           autocomplete='email'
         />
@@ -77,6 +79,7 @@ const Register = () => {
           type='password'
           name='password'
           value={newUser.password}
+          placeholder='Enter your password'
           handleChange={handleChange}
           autocomplete='current-password'
         />
