@@ -4,7 +4,7 @@ const Alert = () => {
   // TODO: Use the global state to display an alert if there is an error
   // TODO: Use the global state to display an alert if there is a success
   // TODO: Use p tag to display the message
-  return <div className={`alert alert-${alert.type}`}>{alert.msg}</div>;
+  return <div className={`alert alert-${alert.type}`}>{alert.message}</div>;
 };
 
 export default Alert;

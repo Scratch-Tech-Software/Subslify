@@ -21,7 +21,10 @@ const reducer = (state, action) => {
     return {
       ...state,
       showAlert: true,
-      alert: { type: 'danger', msg: 'Please provide all values!' },
+      alert: {
+        type: 'danger',
+        message: action.payload.message || 'Unexpected Error',
+      },
     };
   }
 
@@ -29,7 +32,7 @@ const reducer = (state, action) => {
     return {
       ...state,
       showAlert: false,
-      alert: { type: '', msg: '' },
+      alert: { type: '', message: '' },
     };
   }
 
@@ -44,7 +47,7 @@ const reducer = (state, action) => {
       user: action.payload.user,
       token: action.payload.token,
       showAlert: true,
-      alert: { type: 'success', msg: 'User registered successfully!' },
+      alert: { type: 'success', message: 'User registered successfully!' },
     };
   }
 
@@ -55,8 +58,8 @@ const reducer = (state, action) => {
       showAlert: true,
       alert: {
         type: 'danger',
-        msg:
-          action.payload.msg ||
+        message:
+          action.payload.message ||
           'Unexpected Error. User could not be registered.',
       },
     };
@@ -73,7 +76,7 @@ const reducer = (state, action) => {
       user: action.payload.user,
       token: action.payload.token,
       showAlert: true,
-      alert: { type: 'success', msg: 'Login Successful! Redirecting...' },
+      alert: { type: 'success', message: 'Login Successful! Redirecting...' },
     };
   }
 
@@ -84,8 +87,8 @@ const reducer = (state, action) => {
       showAlert: true,
       alert: {
         type: 'danger',
-        msg:
-          action.payload.msg ||
+        message:
+          action.payload.message ||
           'Unexpected Error. User could not be logged in.',
       },
     };
