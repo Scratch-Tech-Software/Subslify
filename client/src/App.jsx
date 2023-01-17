@@ -1,6 +1,13 @@
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { Register, Landing, Error, ProtectedRoute } from './pages';
-import { Active, Past, Summary, Trial, SharedLayout } from './pages/dashboard';
+import {
+  Active,
+  Past,
+  Summary,
+  Trial,
+  SharedLayout,
+  Profile,
+} from './pages/dashboard';
 
 const App = () => {
   return (
@@ -14,10 +21,11 @@ const App = () => {
             </ProtectedRoute>
           }
         >
-          <Route index element={<Active />} />
+          <Route index element={<Summary />} />
+          <Route path='active' element={<Active />} />
           <Route path='trial' element={<Trial />} />
           <Route path='past' element={<Past />} />
-          <Route path='summary' element={<Summary />} />
+          <Route path='profile' element={<Profile />} />
         </Route>
         <Route path='/register' element={<Register />} />
         <Route path='/landing' element={<Landing />} />

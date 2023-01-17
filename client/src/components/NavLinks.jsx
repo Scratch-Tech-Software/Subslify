@@ -5,7 +5,7 @@ const NavLinks = ({ toggleSidebar }) => {
   return (
     <div className='nav-links'>
       {links.map((link) => {
-        const { id, path, text } = link;
+        const { id, path, text, icon } = link;
         return (
           <NavLink
             to={path}
@@ -15,6 +15,7 @@ const NavLinks = ({ toggleSidebar }) => {
               isActive ? 'active nav-link' : 'nav-link'
             }
           >
+            <span className='icon'>{icon}</span>
             {text}
           </NavLink>
         );
