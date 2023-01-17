@@ -14,7 +14,6 @@ import subscriptionsRouter from './routes/subscriptionsRoutes.js';
 import notFoundMiddleware from './middleware/not-found.js';
 import errorHandlerMiddleware from './middleware/error-handler.js';
 
-dotenv.config();
 dotenv.config({ path: '../.env' });
 
 const app = express();
