@@ -4,7 +4,7 @@
   "description": "Subslify is a subscription management app that helps users track and organize their monthly subscriptions.",
   "main": "server.js",
   "scripts": {
-    "install-deps": "npm run install-client && npm run install-server && npm install",
+    "install-dependencies": "npm run install-client && npm run install-server && npm install",
     "install-client": "cd client && npm install",
     "install-server": "cd server && npm install",
     "build-client": "npm run build --prefix client",
