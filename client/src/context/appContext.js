@@ -31,7 +31,41 @@ const AppContext = createContext();
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // TODO: Refactor displayAlert to give more control over the alert message
+  // Axios config
+  // TODO move to separate file
+  const authFetch = axios.create({
+    baseURL: '/api/v1/',
+  });
+
+  // alternative way to add token to header
+  // authFetch.defaults.headers.common['Authorization'] = `Bearer ${state.token}`;
+
+  /* Adding the token to the header of the request. */
+  authFetch.interceptors.request.use(
+    (config) => {
+      config.headers['Authorization'] = `Bearer ${state.token}`;
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+
+  /* Adding the token to the header of the response. */
+  authFetch.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      // console.log(error.response);
+      if (error.response.status === 401) {
+        // TODO: dispatch logout action or redirect to login page
+        console.log('401 error');
+      }
+      return Promise.reject(error);
+    }
+  );
+
   const displayAlert = (message) => {
     dispatch({
       type: DISPLAY_ALERT,
@@ -104,7 +138,13 @@ const AppProvider = ({ children }) => {
   };
 
   const updateUser = async (currentUser) => {
-    console.log({ currentUser });
+    // console.log('currentUser', currentUser);
+    // TODO: update user data on frontend
+    try {
+      const { data } = await authFetch.patch('/auth/updateUser', currentUser);
+    } catch (error) {
+      console.error(error.response?.data?.message || error.message);
+    }
     // dispatch({ type: UPDATE_USER, payload: { user } });
     // addUserToLocalStorage(user);
   };
@@ -123,6 +163,7 @@ const AppProvider = ({ children }) => {
         loginUser,
         toggleSidebar,
         logoutUser,
+        updateUser,
       }}
     >
       {children}
