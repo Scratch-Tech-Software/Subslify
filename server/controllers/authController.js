@@ -58,7 +58,7 @@ const updateUser = async (req, res) => {
     throw new BadRequestError('Please provide an email');
   }
 
-  const user = await User.findById(req.user.userId);
+  const user = await User.findOne({ email });
   if (!user) {
     throw new UnauthenticatedError('User not found');
   }
