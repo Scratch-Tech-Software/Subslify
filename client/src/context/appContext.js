@@ -11,6 +11,9 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
   LOGOUT_USER,
+  UPDATE_USER_BEGIN,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_ERROR,
   TOGGLE_SIDEBAR,
 } from './actions';
 
@@ -80,7 +83,7 @@ const AppProvider = ({ children }) => {
     }, 1500);
   };
 
-  const addUserToLocalStorage = (user, token) => {
+  const addUserToLocalStorage = ({ user, token }) => {
     localStorage.setItem('user', JSON.stringify(user));
     localStorage.setItem('token', token);
   };
@@ -101,7 +104,7 @@ const AppProvider = ({ children }) => {
         throw new Error('User or token not found');
       }
 
-      addUserToLocalStorage(user, token);
+      addUserToLocalStorage({ user, token });
     } catch (error) {
       dispatch({
         type: REGISTER_USER_ERROR,
@@ -122,11 +125,11 @@ const AppProvider = ({ children }) => {
       }
 
       dispatch({ type: LOGIN_USER_SUCCESS, payload: { user, token } });
-      addUserToLocalStorage(user, token);
+      addUserToLocalStorage({ user, token });
     } catch (error) {
       dispatch({
         type: LOGIN_USER_ERROR,
-        payload: { message: error.message || error.response?.data?.message },
+        payload: { message: error.response?.data?.message || 'Login failed' },
       });
     }
     clearAlert();
@@ -138,15 +141,26 @@ const AppProvider = ({ children }) => {
   };
 
   const updateUser = async (currentUser) => {
-    // console.log('currentUser', currentUser);
-    // TODO: update user data on frontend
+    dispatch({ type: UPDATE_USER_BEGIN });
     try {
       const { data } = await authFetch.patch('/auth/updateUser', currentUser);
+      const { user, token } = data;
+
+      if (!user || !token) {
+        throw new Error('User or token not found');
+      }
+
+      dispatch({ type: UPDATE_USER_SUCCESS, payload: { user, token } });
+      addUserToLocalStorage({ user, token });
     } catch (error) {
-      console.error(error.response?.data?.message || error.message);
+      dispatch({
+        type: UPDATE_USER_ERROR,
+        payload: {
+          message: error.response?.data?.message || 'Updating user data failed',
+        },
+      });
     }
-    // dispatch({ type: UPDATE_USER, payload: { user } });
-    // addUserToLocalStorage(user);
+    clearAlert();
   };
 
   const toggleSidebar = () => {

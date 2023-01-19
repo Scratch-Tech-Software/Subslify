@@ -9,18 +9,18 @@ const Profile = () => {
     useAppContext();
 
   const [name, setName] = useState(user?.name);
-  const [email, setEmail] = useState(user?.email);
+  const [newEmail, setNewEmail] = useState(user?.email);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!name) {
       return displayAlert('Please enter your name');
     }
-    if (!email) {
+    if (!newEmail) {
       return displayAlert('Please enter your email');
     }
 
-    updateUser({ name, email });
+    updateUser({ name, email: user.email, newEmail });
   };
 
   return (
@@ -41,9 +41,9 @@ const Profile = () => {
           <FormRow
             type='email'
             name='email'
-            value={email}
+            value={newEmail}
             placeholder='Enter your email'
-            handleChange={(e) => setEmail(e.target.value)}
+            handleChange={(e) => setNewEmail(e.target.value)}
             labelText='Email'
             autocomplete='email'
           />
