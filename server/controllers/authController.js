@@ -49,12 +49,17 @@ const login = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  const { name, email } = req.body;
+  const { name, email, newEmail } = req.body;
 
   if (!name) {
     throw new BadRequestError('Please provide a name');
   }
+
   if (!email) {
+    throw new BadRequestError('Please provide an email');
+  }
+
+  if (!newEmail) {
     throw new BadRequestError('Please provide an email');
   }
 
@@ -64,7 +69,7 @@ const updateUser = async (req, res) => {
   }
 
   user.name = name;
-  user.email = email;
+  user.email = newEmail;
   await user.save();
 
   const userData = { name: user.name, email: user.email };

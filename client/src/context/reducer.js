@@ -8,13 +8,15 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
   LOGOUT_USER,
+  UPDATE_USER_BEGIN,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_ERROR,
   TOGGLE_SIDEBAR,
 } from './actions';
 
 import { initialState } from './appContext';
 
 // TODO: Refactor this to use a switch statement
-// TODO: Refactor displayAlert to give more control over the alert message
 
 const reducer = (state, action) => {
   if (action.type === DISPLAY_ALERT) {
@@ -99,6 +101,35 @@ const reducer = (state, action) => {
       ...initialState,
       user: null,
       token: null,
+    };
+  }
+
+  if (action.type === UPDATE_USER_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+
+  if (action.type === UPDATE_USER_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      user: action.payload.user,
+      token: action.payload.token,
+      showAlert: true,
+      alert: { type: 'success', message: 'User updated successfully!' },
+    };
+  }
+
+  if (action.type === UPDATE_USER_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alert: {
+        type: 'danger',
+        message:
+          action.payload.message ||
+          'Unexpected Error. User could not be updated.',
+      },
     };
   }
 
