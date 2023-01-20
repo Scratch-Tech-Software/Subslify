@@ -8,7 +8,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME} # set container root username
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD} # set container root password
     volumes:
-      - ./database-data:/data/db
+      - ./db-data:/data/db
     ports:
       - '27017-27019:27017-27019'
 
