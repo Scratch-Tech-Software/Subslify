@@ -1,5 +1,6 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const common = require('./webpack.common.js');
@@ -12,7 +13,7 @@ const dev = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/i,
+        test: /\.(ts|js)x?$/i,
         exclude: /node_modules/,
         use: [
           {
