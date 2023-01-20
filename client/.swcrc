@@ -1,28 +1,29 @@
 {
   "minify": false,
   "jsc": {
-      "parser": {
-          "syntax": "ecmascript",
-          "jsx": true,
-          "dynamicImport": true,
-          "decorators": true
+    "parser": {
+      "syntax": "ecmascript",
+      "jsx": true,
+      "dynamicImport": true,
+      "decorators": true,
+      "typescript": true
+    },
+    "transform": {
+      "react": {
+        "development": true,
+        "refresh": true,
+        "runtime": "automatic"
       },
-      "transform": {
-          "react": {
-              "development": true,
-              "refresh": true,
-              "runtime": "automatic"
-          },
-          "optimizer": {
-              "simplify": true,
-              "globals": {
-                  "vars": {
-                      "__DEBUG__": "true"
-                  }
-              }
+      "optimizer": {
+        "simplify": true,
+        "globals": {
+          "vars": {
+            "__DEBUG__": "true"
           }
-      },
-      "externalHelpers": true,
-      "loose": true
+        }
+      }
+    },
+    "externalHelpers": true,
+    "loose": true
   }
 }

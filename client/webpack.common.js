@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const common = {
   entry: {
-    app: path.resolve(__dirname, './src/index.js'),
+    app: path.resolve(__dirname, './src/index.tsx'),
   },
 
   output: {

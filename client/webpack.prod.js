@@ -8,7 +8,7 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.(js)x?$/i,
+        test: /\.(ts|js)x?$/i,
         use: {
           loader: 'babel-loader',
         },
