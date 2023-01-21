@@ -38,5 +38,8 @@
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-react": "^7.32.1",
     "prettier": "^2.8.1"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.1"
   }
 }
