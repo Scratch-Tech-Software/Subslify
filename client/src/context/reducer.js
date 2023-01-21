@@ -47,7 +47,6 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       user: action.payload.user,
-      token: action.payload.token,
       showAlert: true,
       alert: { type: 'success', message: 'User registered successfully!' },
     };
@@ -76,7 +75,6 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       user: action.payload.user,
-      token: action.payload.token,
       showAlert: true,
       alert: { type: 'success', message: 'Login Successful! Redirecting...' },
     };
@@ -100,7 +98,6 @@ const reducer = (state, action) => {
     return {
       ...initialState,
       user: null,
-      token: null,
     };
   }
 
@@ -113,7 +110,6 @@ const reducer = (state, action) => {
       ...state,
       isLoading: false,
       user: action.payload.user,
-      token: action.payload.token,
       showAlert: true,
       alert: { type: 'success', message: 'User updated successfully!' },
     };

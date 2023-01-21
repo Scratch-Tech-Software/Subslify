@@ -17,15 +17,11 @@ import {
   TOGGLE_SIDEBAR,
 } from './actions';
 
-const user = localStorage.getItem('user');
-const token = localStorage.getItem('token');
-
 const initialState = {
   isLoading: false,
   showAlert: false,
   alert: { type: '', message: '' },
-  user: user ? JSON.parse(user) : null,
-  token: token,
+  user: null,
   showSidebar: true,
 };
 
@@ -44,15 +40,15 @@ const AppProvider = ({ children }) => {
   // authFetch.defaults.headers.common['Authorization'] = `Bearer ${state.token}`;
 
   /* Adding the token to the header of the request. */
-  authFetch.interceptors.request.use(
-    (config) => {
-      config.headers['Authorization'] = `Bearer ${state.token}`;
-      return config;
-    },
-    (error) => {
-      return Promise.reject(error);
-    }
-  );
+  // authFetch.interceptors.request.use(
+  //   (config) => {
+  //     config.headers['Authorization'] = `Bearer ${state.token}`;
+  //     return config;
+  //   },
+  //   (error) => {
+  //     return Promise.reject(error);
+  //   }
+  // );
 
   /* Adding the token to the header of the response. */
   authFetch.interceptors.response.use(
@@ -82,32 +78,25 @@ const AppProvider = ({ children }) => {
     }, 1500);
   };
 
-  const addUserToLocalStorage = ({ user, token }) => {
-    localStorage.setItem('user', JSON.stringify(user));
-    localStorage.setItem('token', token);
-  };
-
-  const removeUserFromLocalStorage = () => {
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
-  };
-
   const registerUser = async (newUser) => {
     dispatch({ type: REGISTER_USER_BEGIN });
     try {
       const response = await axios.post('/api/v1/auth/register', newUser);
-      const { user, token } = response.data;
-      dispatch({ type: REGISTER_USER_SUCCESS, payload: { user, token } });
+      const { user } = response.data;
+      dispatch({ type: REGISTER_USER_SUCCESS, payload: { user } });
 
-      if (!user || !token) {
-        throw new Error('User or token not found');
+      if (!user) {
+        throw new Error('User not found');
       }
-
-      addUserToLocalStorage({ user, token });
     } catch (error) {
       dispatch({
         type: REGISTER_USER_ERROR,
-        payload: { message: error.response.data.message },
+        payload: {
+          message:
+            error.message ||
+            error.response?.data?.message ||
+            'Registration error',
+        },
       });
     }
     clearAlert();
@@ -117,14 +106,13 @@ const AppProvider = ({ children }) => {
     dispatch({ type: LOGIN_USER_BEGIN });
     try {
       const response = await axios.post('/api/v1/auth/login', currentUser);
-      const { user, token } = response.data;
+      const { user } = response.data;
 
-      if (!user || !token) {
-        throw new Error('User or token not found');
+      if (!user) {
+        throw new Error('User not found');
       }
 
-      dispatch({ type: LOGIN_USER_SUCCESS, payload: { user, token } });
-      addUserToLocalStorage({ user, token });
+      dispatch({ type: LOGIN_USER_SUCCESS, payload: { user } });
     } catch (error) {
       dispatch({
         type: LOGIN_USER_ERROR,
@@ -136,21 +124,19 @@ const AppProvider = ({ children }) => {
 
   const logoutUser = () => {
     dispatch({ type: LOGOUT_USER });
-    removeUserFromLocalStorage();
   };
 
   const updateUser = async (currentUser) => {
     dispatch({ type: UPDATE_USER_BEGIN });
     try {
       const { data } = await authFetch.patch('/auth/updateUser', currentUser);
-      const { user, token } = data;
+      const { user } = data;
 
-      if (!user || !token) {
-        throw new Error('User or token not found');
+      if (!user) {
+        throw new Error('User not found');
       }
 
-      dispatch({ type: UPDATE_USER_SUCCESS, payload: { user, token } });
-      addUserToLocalStorage({ user, token });
+      dispatch({ type: UPDATE_USER_SUCCESS, payload: { user } });
     } catch (error) {
       if (error.response?.status !== 401) {
         dispatch({
