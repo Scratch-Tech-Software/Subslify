@@ -62,8 +62,7 @@ const AppProvider = ({ children }) => {
     (error) => {
       // console.log(error.response);
       if (error.response.status === 401) {
-        // TODO: dispatch logout action or redirect to login page
-        console.log('401 error');
+        logoutUser();
       }
       return Promise.reject(error);
     }
@@ -153,12 +152,15 @@ const AppProvider = ({ children }) => {
       dispatch({ type: UPDATE_USER_SUCCESS, payload: { user, token } });
       addUserToLocalStorage({ user, token });
     } catch (error) {
-      dispatch({
-        type: UPDATE_USER_ERROR,
-        payload: {
-          message: error.response?.data?.message || 'Updating user data failed',
-        },
-      });
+      if (error.response?.status !== 401) {
+        dispatch({
+          type: UPDATE_USER_ERROR,
+          payload: {
+            message:
+              error.response?.data?.message || 'Updating user data failed',
+          },
+        });
+      }
     }
     clearAlert();
   };
