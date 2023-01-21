@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 import {
   BadRequestError,
   CustomAPIError,
-  UnauthenticatedError,
+  UnAuthenticatedError,
 } from '../errors/index.js';
 import attachCookies from '../utils/attachCookies.js';
 
@@ -26,7 +26,7 @@ const register = async (req, res) => {
   const token = newUser.createJWT();
   attachCookies({ res, token });
   const user = { name: newUser.name, email: newUser.email };
-  res.status(StatusCodes.CREATED).json({ user, token });
+  res.status(StatusCodes.CREATED).json({ user });
 };
 
 const login = async (req, res) => {
@@ -37,18 +37,18 @@ const login = async (req, res) => {
 
   const user = await User.findOne({ email }).select('+password');
   if (!user) {
-    throw new UnauthenticatedError('Invalid credentials');
+    throw new UnAuthenticatedError('Invalid credentials');
   }
 
   const isPaswordCorrect = await user.comparePasswords(password);
   if (!isPaswordCorrect) {
-    throw new UnauthenticatedError('Invalid credentials');
+    throw new UnAuthenticatedError('Invalid credentials');
   }
 
   const token = user.createJWT();
   attachCookies({ res, token });
   const userData = { name: user.name, email: user.email };
-  res.status(StatusCodes.OK).json({ user: userData, token });
+  res.status(StatusCodes.OK).json({ user: userData });
 };
 
 const updateUser = async (req, res) => {
@@ -68,7 +68,7 @@ const updateUser = async (req, res) => {
 
   const user = await User.findOne({ email });
   if (!user) {
-    throw new UnauthenticatedError('User not found');
+    throw new UnAuthenticatedError('User not found');
   }
 
   user.name = name;
@@ -79,7 +79,7 @@ const updateUser = async (req, res) => {
 
   const token = user.createJWT();
   attachCookies({ res, token });
-  res.status(StatusCodes.OK).json({ user: userData, token });
+  res.status(StatusCodes.OK).json({ user: userData });
 };
 
 export { register, login, updateUser };
