@@ -56,6 +56,7 @@ const UserSchema: Schema<UserSchemaType> = new Schema({
   },
 });
 
+
 UserSchema.methods.createJWT = function (): string {
   const token = jwt.sign(
     {
