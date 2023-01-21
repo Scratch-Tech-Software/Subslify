@@ -5,6 +5,7 @@ import {
   CustomAPIError,
   UnauthenticatedError,
 } from '../errors/index.js';
+import attachCookies from '../utils/attachCookies.js';
 
 const register = async (req, res) => {
   const { name, email, password } = req.body;
@@ -23,6 +24,7 @@ const register = async (req, res) => {
 
   const newUser = await User.create({ name, email, password });
   const token = newUser.createJWT();
+  attachCookies({ res, token });
   const user = { name: newUser.name, email: newUser.email };
   res.status(StatusCodes.CREATED).json({ user, token });
 };
@@ -44,6 +46,7 @@ const login = async (req, res) => {
   }
 
   const token = user.createJWT();
+  attachCookies({ res, token });
   const userData = { name: user.name, email: user.email };
   res.status(StatusCodes.OK).json({ user: userData, token });
 };
@@ -75,7 +78,7 @@ const updateUser = async (req, res) => {
   const userData = { name: user.name, email: user.email };
 
   const token = user.createJWT();
-
+  attachCookies({ res, token });
   res.status(StatusCodes.OK).json({ user: userData, token });
 };
 
