@@ -30,8 +30,18 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { name, email, password, isRegistered } = newUser;
-    if (!email || !password || (!isRegistered && !name)) {
-      displayAlert();
+    if (!email) {
+      displayAlert('Please enter your email address');
+      return;
+    }
+
+    if (!password) {
+      displayAlert('Please enter your password');
+      return;
+    }
+
+    if (!isRegistered && !name) {
+      displayAlert('Please enter your name');
       return;
     }
 
