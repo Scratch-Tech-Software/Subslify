@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Application, Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import 'express-async-errors';
 import morgan from 'morgan';
@@ -16,7 +16,7 @@ import errorHandlerMiddleware from './middleware/error-handler.js';
 
 dotenv.config({ path: '../.env' });
 
-const app = express();
+const app: Application = express();
 const port = process.env.PORT || 5002;
 
 if (process.env.NODE_ENV !== 'production') {
@@ -25,17 +25,18 @@ if (process.env.NODE_ENV !== 'production') {
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('/', (_req: Request, res: Response, _next: NextFunction) => {
   res.send('Hello World!');
 });
 
+// Register the authRouter and subscriptionsRouter to their respective endpoints.
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/subscriptions', subscriptionsRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-const start = async () => {
+const start = async (): Promise<void> => {
   try {
     await connectDB(process.env.MONGODB_URI);
     app.listen(port, () => {
