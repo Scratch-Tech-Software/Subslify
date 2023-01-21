@@ -4,7 +4,7 @@
   "description": "The server-side component of a web app that helps users keep track of their subscriptions.",
   "main": "server.js",
   "scripts": {
-    "start-server": "nodemon --exec node --trace-warnings --no-warnings --loader ts-node/esm src/server.ts"
+    "start-server": "nodemon -c nodemon.json"
   },
   "repository": {
     "type": "git",
