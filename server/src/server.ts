@@ -1,6 +1,7 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import 'express-async-errors';
+import passport from 'passport';
 import morgan from 'morgan';
 
 // db and authenticateUser
@@ -14,7 +15,11 @@ import subscriptionsRouter from './routes/subscriptionsRoutes.js';
 import notFoundMiddleware from './middleware/not-found.js';
 import errorHandlerMiddleware from './middleware/error-handler.js';
 
+//Load config
 dotenv.config({ path: '../.env' });
+
+//Passport config
+require('./Oauth/passport.js') (passport);
 
 const app: Application = express();
 const port = process.env.PORT || 5002;
