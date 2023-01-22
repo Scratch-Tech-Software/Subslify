@@ -16,8 +16,7 @@ const Navbar = () => {
           <FaAlignLeft />
         </button>
         <div>
-          <Logo />
-          <h3>Subslify</h3>
+          <h3 className='heading'>Subslify</h3>
         </div>
 
         <div className='btn-container'>
