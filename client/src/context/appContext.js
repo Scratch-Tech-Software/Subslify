@@ -60,7 +60,7 @@ const AppProvider = ({ children }) => {
     },
     (error) => {
       // console.log(error.response);
-      if (error.response.status === 401) {
+      if (error.response?.status === 401) {
         logoutUser();
       }
       return Promise.reject(error);
@@ -126,7 +126,14 @@ const AppProvider = ({ children }) => {
   };
 
   const logoutUser = async () => {
-    await authFetch.get('/auth/logout');
+    try {
+      await authFetch.get('/auth/logout');
+    } catch (error) {
+      displayAlert(
+        error.response?.data?.message || error.message || 'Logout failed'
+      );
+    }
+
     dispatch({ type: LOGOUT_USER });
   };
 
@@ -176,11 +183,11 @@ const AppProvider = ({ children }) => {
 
       dispatch({ type: GET_CURRENT_USER_SUCCESS, payload: { user } });
     } catch (error) {
-      if (error.response?.status !== 401) {
-        displayAlert(
-          error.response?.data?.message || 'Getting current user failed'
-        );
-      }
+      if (error.response?.status === 401) return;
+
+      displayAlert(
+        error.response?.data?.message || 'Getting current user failed'
+      );
       logoutUser();
     }
   };
