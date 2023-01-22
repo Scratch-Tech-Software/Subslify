@@ -140,6 +140,20 @@ const reducer = (state, action) => {
     };
   }
 
+  if (action.type === SORT_SUBSCRIPTIONS_SUCCESS) {
+    return {
+      ...state,
+      
+    }
+  }
+
+  if (action.type === SORT_SUBSCRIPTIONS_ERROR) {
+    return {
+      ...state,
+      //Should I follow the same pattern as in UPDATE_USER_ERROR? Alerts?
+    }
+  }
+
   throw new Error(`Unhandled action type: ${action.type}`);
 };
 

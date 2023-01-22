@@ -142,7 +142,7 @@ const AppProvider = ({ children }) => {
   const updateUser = async (currentUser) => {
     dispatch({ type: UPDATE_USER_BEGIN });
     try {
-      const { data } = await authFetch.patch('/auth/updateUser', currentUser);
+      const { data } = await authFetch.patch('/api/v1/subscriptions', currentUser);
       const { user, token } = data;
 
       if (!user || !token) {
@@ -169,6 +169,29 @@ const AppProvider = ({ children }) => {
     dispatch({ type: TOGGLE_SIDEBAR });
   };
 
+  const getSortedSubs = async (currentUser) => {
+    try{
+      //Follow the same pattern as user login? Loading might be good.
+      //Need to add to body, params, etc the type of sorting: alphabetical, payment due, and cost
+      const { data } = await axios.get('/auth/updateUser', currentUser /* current user necessary for api authorization?*/ );
+      const { subscriptions } = data;
+      
+      dispatch({
+        type: SORT_SUBSCRIPTIONS_SUCCESS,
+        payload: subscriptions
+      });
+    }
+    catch(err){
+      dispatch( {
+        type: SORT_SUBSCRIPTIONS_ERROR,
+        payload: {
+          message:
+            error.response?.data?.message || 'Failed to retrieve sorted subscription data.'
+        }
+      });
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -180,6 +203,7 @@ const AppProvider = ({ children }) => {
         toggleSidebar,
         logoutUser,
         updateUser,
+        getSortedSubs,
       }}
     >
       {children}
