@@ -82,4 +82,21 @@ const updateUser = async (req, res) => {
   res.status(StatusCodes.OK).json({ user: userData });
 };
 
-export { register, login, updateUser };
+const getCurrentUser = async (req, res) => {
+  const { id } = req.user;
+
+  if (!id) {
+    throw new UnAuthenticatedError('User id not found');
+  }
+
+  const user = await User.findById(id);
+
+  if (!user) {
+    throw new UnAuthenticatedError('User not found');
+  }
+
+  const userData = { name: user.name, email: user.email };
+  res.status(StatusCodes.OK).json({ user: userData });
+};
+
+export { register, login, updateUser, getCurrentUser };
