@@ -5,7 +5,9 @@ const auth = async (req, _res, next) => {
   const token = req.cookies?.token;
 
   if (!token) {
-    throw new UnAuthenticatedError('Authentication invalid');
+    throw new UnAuthenticatedError(
+      'Not token provided. Authentication invalid'
+    );
   }
 
   try {
