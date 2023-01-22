@@ -99,4 +99,9 @@ const getCurrentUser = async (req, res) => {
   res.status(StatusCodes.OK).json({ user: userData });
 };
 
-export { register, login, updateUser, getCurrentUser };
+const logout = async (req, res) => {
+  res.clearCookie('token');
+  res.status(StatusCodes.OK).json({ message: 'Logged out' });
+};
+
+export { register, login, updateUser, getCurrentUser, logout };

@@ -125,7 +125,8 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
-  const logoutUser = () => {
+  const logoutUser = async () => {
+    await authFetch.get('/auth/logout');
     dispatch({ type: LOGOUT_USER });
   };
 
