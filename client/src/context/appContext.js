@@ -1,4 +1,4 @@
-import { useReducer, useContext, createContext } from 'react';
+import { useReducer, useContext, createContext, useEffect } from 'react';
 import axios from 'axios';
 import reducer from './reducer';
 import {
@@ -14,11 +14,14 @@ import {
   UPDATE_USER_BEGIN,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
+  GET_CURRENT_USER_BEGIN,
+  GET_CURRENT_USER_SUCCESS,
   TOGGLE_SIDEBAR,
 } from './actions';
 
 const initialState = {
   isLoading: false,
+  userLoading: true,
   showAlert: false,
   alert: { type: '', message: '' },
   user: null,
@@ -154,6 +157,36 @@ const AppProvider = ({ children }) => {
   const toggleSidebar = () => {
     dispatch({ type: TOGGLE_SIDEBAR });
   };
+
+  const getCurrentUser = async () => {
+    dispatch({ type: GET_CURRENT_USER_BEGIN });
+    try {
+      const { data } = await authFetch.get('/auth/getCurrentUser');
+
+      if (!data) {
+        throw new Error('User not found');
+      }
+
+      const { user } = data;
+
+      if (!user) {
+        throw new Error('User not found');
+      }
+
+      dispatch({ type: GET_CURRENT_USER_SUCCESS, payload: { user } });
+    } catch (error) {
+      if (error.response?.status !== 401) {
+        displayAlert(
+          error.response?.data?.message || 'Getting current user failed'
+        );
+      }
+      logoutUser();
+    }
+  };
+
+  useEffect(() => {
+    getCurrentUser();
+  }, []);
 
   return (
     <AppContext.Provider

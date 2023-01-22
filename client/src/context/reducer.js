@@ -11,6 +11,8 @@ import {
   UPDATE_USER_BEGIN,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
+  GET_CURRENT_USER_BEGIN,
+  GET_CURRENT_USER_SUCCESS,
   TOGGLE_SIDEBAR,
 } from './actions';
 
@@ -97,7 +99,7 @@ const reducer = (state, action) => {
   if (action.type === LOGOUT_USER) {
     return {
       ...initialState,
-      user: null,
+      userLoading: false,
     };
   }
 
@@ -133,6 +135,18 @@ const reducer = (state, action) => {
     return {
       ...state,
       showSidebar: !state.showSidebar,
+    };
+  }
+
+  if (action.type === GET_CURRENT_USER_BEGIN) {
+    return { ...state, isLoading: true, showAlert: false };
+  }
+
+  if (action.type === GET_CURRENT_USER_SUCCESS) {
+    return {
+      ...state,
+      userLoading: false,
+      user: action.payload.user,
     };
   }
 
