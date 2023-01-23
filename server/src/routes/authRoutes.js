@@ -12,14 +12,17 @@ router.route('/updateUser').patch(authenticateUser, updateUser);
 //GET /auth/google
 router
   .route('/google')
-  .get(passport.authenticate('google', { scope: ['profile'] }));
-//GET /auth/google/callback
+  .get(passport.authenticate('google', (req, res)=> {
+    res.status(200);
+  }));
+
+//GET /auth/google/callback  (bad request)
 router
-  .route('/google/callback')
+  .route('/google/redirect')
   .get(
-    passport.authenticate('google', { failureRedirect: '/' }),
+    passport.authenticate('google', { failureRedirect: '/register' }),
     (req, res) => {
-      res.redirect('/register');
+      res.redirect('/landing');
     }
   );
 

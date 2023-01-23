@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import 'express-async-errors';
 import session from 'express-session';
 import passport from 'passport';
+import passportConfig from './Config/google.js';
 import morgan from 'morgan';
 
 // db and authenticateUser
@@ -15,12 +16,13 @@ import subscriptionsRouter from './routes/subscriptionsRoutes.js';
 // middleware
 import notFoundMiddleware from './middleware/not-found.js';
 import errorHandlerMiddleware from './middleware/error-handler.js';
-//Passport config
-import passportConfig from './Oauth/passport.js';
 
 //Load config
 dotenv.config({ path: '../.env' });
 
+//Passport config
+passportConfig(passport);
+// require('./Config/google');
 
 const app: Application = express();
 const port = process.env.PORT || 5002;
@@ -43,11 +45,13 @@ app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
 //Sessions
-app.use(session({
-  secret: 'keyboard cat',
-  resave: false,
-  saveUninitialized: false,  //dont store anything until session happens
-}))
+app.use(
+  session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false, //dont store anything until session happens
+  })
+);
 
 // Passport middleware
 app.use(passport.initialize());
