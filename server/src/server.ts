@@ -50,13 +50,7 @@ app.get('/', (_req: Request, res: Response, _next: NextFunction) => {
 });
 
 // Register the authRouter and subscriptionsRouter to their respective endpoints.
-// app
-//   .route('/api/v1/auth/google')
-//   .get(passport.authenticate('google', (req, res)=> {
-//     res.status(200);
-//   }));
 app.use('/api/v1/auth', authRouter);
-
 app.use('/api/v1/subscriptions', subscriptionsRouter);
 
 app.use(notFoundMiddleware);
