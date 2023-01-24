@@ -1,6 +1,13 @@
 import express from 'express';
 import passport from 'passport';
 import { register, login, updateUser } from '../controllers/authController.js';
+import {
+  register,
+  login,
+  updateUser,
+  getCurrentUser,
+  logout,
+} from '../controllers/authController.js';
 import authenticateUser from '../middleware/auth.js';
 
 const router = express.Router();
@@ -25,5 +32,7 @@ router
       res.redirect('/');
     }
   );
+router.route('/getCurrentUser').get(authenticateUser, getCurrentUser);
+router.route('/logout').get(logout);
 
 export default router;

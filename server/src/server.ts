@@ -17,6 +17,12 @@ import subscriptionsRouter from './routes/subscriptionsRoutes.js';
 import notFoundMiddleware from './middleware/not-found.js';
 import errorHandlerMiddleware from './middleware/error-handler.js';
 
+// cookieParser
+import cookieParser from 'cookie-parser';
+
+// cookieParser
+import cookieParser from 'cookie-parser';
+
 //Load config
 dotenv.config({ path: '../.env' });
 
@@ -44,6 +50,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 app.use(express.json());
+app.use(cookieParser());
 
 app.get('/', (_req: Request, res: Response, _next: NextFunction) => {
   res.send('Hello World!');
