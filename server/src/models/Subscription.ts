@@ -1,9 +1,8 @@
 import { Schema, model, ObjectId, Types } from 'mongoose';
 
 enum Frequency {
-  Daily,
-  Weekly,
   Monthly,
+  Quarterly,
   Yearly
 }
 
@@ -62,7 +61,7 @@ const SubscriptionSchema: Schema<SubscriptionSchemaType> = new Schema({
   },
   frequency: {
     type: String,
-    enum: ['daily', 'weekly', 'monthly', 'yearly'],
+    enum: ['monthly', 'quarterly', 'yearly'],
     required: true,
   },
   status: {
