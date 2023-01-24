@@ -6,7 +6,7 @@ const Trial = () => {
   return (
     <div>
       <div>Trial Subscriptions</div>
-      <div className="search-container">
+      <div className="search-sort-container">
         <Search />
         <Sort />
       </div>

@@ -6,7 +6,7 @@ const Past = () => {
   return (
     <div>
       <div>Past Subscriptions</div>
-      <div className="search-container">
+      <div className="search-sort-container">
         <Search />
         <Sort />
       </div>
