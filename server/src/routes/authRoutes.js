@@ -22,7 +22,7 @@ router
   .get(
     passport.authenticate('google', { failureRedirect: '/register' }),
     (req, res) => {
-      res.redirect('/landing');
+      res.redirect('/');
     }
   );
 

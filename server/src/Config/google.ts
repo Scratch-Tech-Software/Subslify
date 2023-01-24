@@ -1,52 +1,3 @@
-// import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-// import User from '../models/User.ts';
-
-// export default function (passport) {
-//   passport.use(
-//     new GoogleStrategy(
-//       {
-//         clientID: process.env.GOOGLE_CLIENT_ID,
-//         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-//         scope: ['profile', 'email'],
-//         response_type: 'code',
-//         callbackURL: '/auth/google/callback',
-//       },
-//       async (accessToken, refreshToken,  profile, done) => {
-//         console.log('googleConfig Profile', profile);
-
-//         const {tokens} = await oauth2Client.getToken(code)
-//         oauth2Client.setCredentials(tokens);
-
-        // const newUser = {
-        //   _id: profile.id,
-        //   name: profile.name,
-        //   email: profile.emails,
-        // }
-
-        // try {
-        //   let user = await User.findOne({_id: profile.id});
-
-        //   if(user) {
-        //     done(null, user);
-        //   } else {
-        //     user = await User.create(user);
-        //     done(null, user);
-        //   }
-
-        // } catch (err) {
-        //   console.log(err)
-        // }
-//       }
-//     )
-//   );
-//   passport.serializeUser((user, done) => {
-//     done(null, user.id);
-//   });
-
-//   passport.deserializeUser((id, done) => {
-//     User.findById(id, (err, user) => done(err, user));
-//   });
-// }
 import User from '../models/User.js';
 import passport from 'passport';
 import {
@@ -56,6 +7,19 @@ import {
 } from 'passport-google-oauth20';
 
 export default function (passport: any) {
+
+  passport.serializeUser((user: any, done: VerifyCallback) => {
+    console.log('serialize user',user);
+    done(null, user.id);
+  });
+  
+  passport.deserializeUser((id: string, done: VerifyCallback) => {
+  
+    User.findById(id, (err: string, user: Object) => 
+    // console.log('serialize user',user.id);
+    done(err, user));
+  });
+  
   passport.use(
     new GoogleStrategy(
       {
@@ -72,35 +36,29 @@ export default function (passport: any) {
       ) => {
         console.log(accessToken);
         console.log(profile);
+// TODO: need to fix password creation
+//should we create a googleId property in User schema?
         const newUser = {
-          _id: profile.id,
-          name: profile.name,
-          email: profile.emails,
+          // googleId:...
+          name: profile.displayName,
+          email: profile.emails[0].value,
+          password: '12345678'
         }
 
         try {
-          let user = await User.findOne({_id: profile.id});
+          let user = await User.findOne({email: profile.emails[0].value});
 
           if(user) {
+
             done(null, user);
           } else {
-            user = await User.create(user);
+            user = await User.create(newUser);
             done(null, user);
           }
-
         } catch (err) {
           console.log(err)
         }
-
-        done(null, { username: profile.displayName });
       }
     )
   );
-  passport.serializeUser((user: any, done: VerifyCallback) => {
-    done(null, user._id);
-  });
-  
-  passport.deserializeUser((id: any, done: VerifyCallback) => {
-    User.findById(id, (err: any, user: Object) => done(err, user));
-  });
 }
