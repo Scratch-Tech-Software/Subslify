@@ -21,7 +21,7 @@ const Active = () => {
     <div>
       <div>Active Subscriptions</div>
         {/* add a div container to contain the search filter and sort components w/ className for styling*/}
-      <div className="search-container">
+      <div className="search-sort-container">
         <Search />
         <Sort />
       </div>

@@ -15,6 +15,9 @@ import {
   UPDATE_USER_SUCCESS,
   UPDATE_USER_ERROR,
   TOGGLE_SIDEBAR,
+  GET_SUBSCRIPTIONS_BEGIN,
+  GET_SUBSCRIPTIONS_SUCCESS,
+  GET_SUBSCRIPTIONS_ERROR,
 } from './actions';
 
 const user = localStorage.getItem('user');
@@ -169,27 +172,30 @@ const AppProvider = ({ children }) => {
     dispatch({ type: TOGGLE_SIDEBAR });
   };
 
-  const getSortedSubs = async (currentUser) => {
+  //do we want to consider optional parameters at all?
+  const getSubscriptions = async (type, query) => {
     try{
+      dispatch({ type: GET_SUBSCRIPTIONS_BEGIN });
       //Follow the same pattern as user login? Loading might be good.
       //Need to add to body, params, etc the type of sorting: alphabetical, payment due, and cost
-      const { data } = await axios.get('/auth/updateUser', currentUser /* current user necessary for api authorization?*/ );
+      const { data } = await axios.get('/subscriptions', );
       const { subscriptions } = data;
       
       dispatch({
-        type: SORT_SUBSCRIPTIONS_SUCCESS,
-        payload: subscriptions
+        type: GET_SUBSCRIPTIONS_SUCCESS,
+        payload: { subscriptions }
       });
     }
     catch(err){
       dispatch( {
-        type: SORT_SUBSCRIPTIONS_ERROR,
+        type: GET_SUBSCRIPTIONS_ERROR,
         payload: {
           message:
             error.response?.data?.message || 'Failed to retrieve sorted subscription data.'
         }
       });
     }
+    clearAlert();
   };
 
   return (
@@ -203,7 +209,7 @@ const AppProvider = ({ children }) => {
         toggleSidebar,
         logoutUser,
         updateUser,
-        getSortedSubs,
+        getSubscriptions,
       }}
     >
       {children}

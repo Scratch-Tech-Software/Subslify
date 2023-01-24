@@ -1,16 +1,20 @@
 import '../assets/styles/search.scss';
+import { useAppContext } from '../context/appContext';
 
 const Search = () => {
   const handleChange = () => {};
 
   return (
-    <div className='search'>
+    <div className='search-container'>
+        <form>
       <input
         className='search-input'
-        type='search'
+        type='text'
         placeholder='Search...'
         onChange={handleChange}
       />
+      <button type='submit'><i className='search-button'></i></button>
+      </form>
     </div>
   );
 };

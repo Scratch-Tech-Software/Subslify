@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useAppContext } from '../context/appContext';
 import '../assets/styles/search.scss';
 
 const Sort = () => {
@@ -10,18 +11,21 @@ const Sort = () => {
   });
 
   const { activeSortOpt } = sortStatus;
+  const { getSubscriptions } = useAppContext();
 
   //Sort dropdown options
-  //Should this ultimately be coming from the db?
   const sortOptions = ['Alphabetical', 'Cost', 'Payment Due'];
 
   const handleSortOptClick = (e) => {
     e.preventDefault();
+    // getSubscriptions('sort', e.target.innerText);
     setSortStatus({ isOpen: false, activeSortOpt: e.target.innerText });
   };
 
   //handler that is invoked upon clicking on sort button, toggling its open status to the opposite boolean
   const handleSortClick = () => {
+    //invoke funtion in appContext here
+        //dispatch action?
     setSortStatus((sortStatus) => {
       return {
         ...sortStatus,
