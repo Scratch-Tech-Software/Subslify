@@ -1,10 +1,14 @@
-import main from '../assets/images/main.svg';
+import { Navigate, Link } from 'react-router-dom';
+import { useAppContext } from '../context/appContext';
 import { Logo } from '../components';
-import { Link } from 'react-router-dom';
 import '../assets/styles/landing-page.scss';
+import main from '../assets/images/main.svg';
 
 const Landing = () => {
-  return (
+  const { user } = useAppContext();
+  return user ? (
+    <Navigate to='/' />
+  ) : (
     <div className='landing-page'>
       <nav>
         <Logo />

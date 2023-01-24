@@ -1,14 +1,14 @@
 declare module '*.jpg' {
-  const value: Buffer;
+  const value: string;
   export = value;
 }
 
 declare module '*.jpeg' {
-  const value: Buffer;
+  const value: string;
   export = value;
 }
 
 declare module '*.png' {
-  const value: Buffer;
+  const value: string;
   export = value;
 }
