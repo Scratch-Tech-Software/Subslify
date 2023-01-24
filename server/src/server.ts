@@ -20,9 +20,6 @@ import errorHandlerMiddleware from './middleware/error-handler.js';
 // cookieParser
 import cookieParser from 'cookie-parser';
 
-// cookieParser
-import cookieParser from 'cookie-parser';
-
 //Load config
 dotenv.config({ path: '../.env' });
 
