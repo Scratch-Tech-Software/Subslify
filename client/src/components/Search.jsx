@@ -6,14 +6,14 @@ const Search = () => {
 
   return (
     <div className='search-container'>
-        <form>
-      <input
-        className='search-input'
-        type='text'
-        placeholder='Search...'
-        onChange={handleChange}
-      />
-      <button type='submit'><i className='search-button'></i></button>
+      <form className='search'>
+        <input
+          className='search-input'
+          type='text'
+          placeholder='Search...'
+          onChange={handleChange}
+        />
+        <button type='submit'><i className='fa-search'></i></button>
       </form>
     </div>
   );
