@@ -1,6 +1,6 @@
 import express from 'express';
 import passport from 'passport';
-import { register, login, updateUser } from '../controllers/authController.js';
+// import { register, login, updateUser } from '../controllers/authController.js';
 import {
   register,
   login,

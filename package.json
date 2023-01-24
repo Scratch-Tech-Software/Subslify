@@ -45,7 +45,9 @@
   },
   "dependencies": {
     "@types/passport-google-oauth20": "^2.0.11",
+    "cookie-parser": "^1.4.6",
     "express-session": "^1.17.3",
+    "generate-password": "^1.7.0",
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
     "passport-google-oidc": "^0.1.0"
