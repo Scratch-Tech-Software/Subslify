@@ -3,20 +3,23 @@ import { StatusCodes } from 'http-status-codes';
 import { UnAuthenticatedError } from '../errors/index.js';
 
 const createSubscription = async (req, res) => {
-  const { name, price, frequency, startDate } = req.body;
+  const { name, price, frequency, startDate, status, endDate, logoUrl, notes } =
+    req.body;
   const user = req.user.id;
   if (!user) {
     throw new UnAuthenticatedError('User not found');
   }
-
   await Subscription.create({
     name,
     price,
     frequency,
     startDate,
     user,
+    status,
+    endDate,
+    logoUrl,
+    notes,
   });
-
   res.status(StatusCodes.CREATED).json({ message: 'Subscription created' });
 };
 
@@ -34,18 +37,7 @@ const getSubscriptions = async (req, res) => {
     user,
     ...req.query, // TODO: sanitize query
   };
-
-  const data = await Subscription.find(filter).exec();
-
-  const subscriptions = data.map((el) => ({
-    name: el.name,
-    price: el.price,
-    frequency: el.frequency,
-    status: el.status,
-    startDate: el.startDate,
-    notes: el.notes,
-  }));
-
+  const subscriptions = await Subscription.find(filter).exec();
   res.status(StatusCodes.OK).json(subscriptions);
 };
 
