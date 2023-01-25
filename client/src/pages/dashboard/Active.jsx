@@ -3,8 +3,6 @@ import { useAppContext } from '../../context/appContext';
 import '../../assets/styles/search.scss';
 
 const Active = () => { 
-  const { isLoading, alert, showAlert } = useAppContext();
-  console.log({isLoading, alert, showAlert});
   return (
     <div>
       <div>Active Subscriptions</div>

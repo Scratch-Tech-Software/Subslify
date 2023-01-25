@@ -39,7 +39,7 @@ const AppProvider = ({ children }) => {
   // Axios config
   // TODO move to separate file
   const authFetch = axios.create({
-    baseURL: '/api/v1/',
+    baseURL: '/api/v1',
   });
 
   // alternative way to add token to header
@@ -202,11 +202,11 @@ const AppProvider = ({ children }) => {
   //do we want to consider optional parameters at all?
   const getSubscriptions = async ({ type, sort, search }) => {
     const url = `/subscriptions?status=${type}&sort=${sort}&search=${search}`;
-    console.log('url', url);
+
     try{
       dispatch({ type: GET_SUBSCRIPTIONS_BEGIN });
       
-      const { data } = await axios.get(url);
+      const { data } = await authFetch.get(url);
       if (!data) {
         throw new Error('Subscriptions not found');
       }
