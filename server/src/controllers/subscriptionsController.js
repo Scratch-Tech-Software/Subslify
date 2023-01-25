@@ -24,6 +24,7 @@ const createSubscription = async (req, res) => {
 };
 
 const getSubscriptions = async (req, res) => {
+ 
   const user = req.user.id;
   const filter = {
     user,
