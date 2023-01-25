@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { useAppContext } from '../context/appContext';
 import '../assets/styles/search.scss';
 
-const Sort = () => {
+const Sort = (props) => {
   //Initialize the sort button's open state to false
   //Otherwise, the dropdown will be open upon initial render
   const [sortStatus, setSortStatus] = useState({
     isOpen: false,
-    activeSortOpt: null,
+    activeSortOpt: '',
   });
 
   const { activeSortOpt } = sortStatus;
@@ -18,7 +18,7 @@ const Sort = () => {
 
   const handleSortOptClick = (e) => {
     e.preventDefault();
-    // getSubscriptions('sort', e.target.innerText);
+    getSubscriptions({type: props.type, sort: e.target.innerText.toLowerCase()});
     setSortStatus({ isOpen: false, activeSortOpt: e.target.innerText });
   };
 

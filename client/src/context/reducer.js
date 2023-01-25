@@ -154,10 +154,12 @@ const reducer = (state, action) => {
   }
 
   if (action.type === GET_SUBSCRIPTIONS_BEGIN) {
+    console.log('begin');
     return { ...state, isLoading: true };
   }
 
   if (action.type === GET_SUBSCRIPTIONS_SUCCESS) {
+    console.log('success');
     return {
       ...state,
       isLoading: false,
@@ -166,6 +168,7 @@ const reducer = (state, action) => {
   }
 
   if (action.type === GET_SUBSCRIPTIONS_ERROR) {
+    console.log('error');
     return {
       ...state,
       isLoading: false,

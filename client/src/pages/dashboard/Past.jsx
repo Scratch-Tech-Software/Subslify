@@ -7,8 +7,8 @@ const Past = () => {
     <div>
       <div>Past Subscriptions</div>
       <div className="search-sort-container">
-        <Search />
-        <Sort />
+        <Search type='past'/>
+        <Sort type='past'/>
       </div>
     </div>
   );

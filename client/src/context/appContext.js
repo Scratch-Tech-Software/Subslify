@@ -200,25 +200,32 @@ const AppProvider = ({ children }) => {
   }, []);
 
   //do we want to consider optional parameters at all?
-  const getSubscriptions = async (type, query) => {
+  const getSubscriptions = async ({ type, sort, search }) => {
+    const url = `/subscriptions?status=${type}&sort=${sort}&search=${search}`;
+    console.log('url', url);
     try{
       dispatch({ type: GET_SUBSCRIPTIONS_BEGIN });
-      //Follow the same pattern as user login? Loading might be good.
-      //Need to add to body, params, etc the type of sorting: alphabetical, payment due, and cost
-      const { data } = await axios.get('/subscriptions', );
+      
+      const { data } = await axios.get(url);
+      if (!data) {
+        throw new Error('Subscriptions not found');
+      }
       const { subscriptions } = data;
+      if (!subscriptions) {
+        throw new Error('Subscriptions not found');
+      }
       
       dispatch({
         type: GET_SUBSCRIPTIONS_SUCCESS,
         payload: { subscriptions }
       });
     }
-    catch(err){
+    catch(error){
       dispatch( {
         type: GET_SUBSCRIPTIONS_ERROR,
         payload: {
           message:
-            error.response?.data?.message || 'Failed to retrieve sorted subscription data.'
+            error.response?.data?.message ||  error.message || 'Getting subscriptions failed'
         }
       });
     }
