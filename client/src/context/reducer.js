@@ -148,6 +148,7 @@ const reducer = (state, action) => {
   if (action.type === GET_CURRENT_USER_SUCCESS) {
     return {
       ...state,
+      isLoading: false,
       userLoading: false,
       user: action.payload.user,
     };
