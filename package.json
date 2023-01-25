@@ -30,8 +30,8 @@
   },
   "homepage": "https://github.com/Scratch-Tech-Software/Subslify#readme",
   "private": true,
+  "dependencies": {},
   "devDependencies": {
-    "@types/node": "^18.11.18",
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",
     "eslint": "^8.31.0",
@@ -39,8 +39,5 @@
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-react": "^7.32.1",
     "prettier": "^2.8.1"
-  },
-  "dependencies": {
-    "ts-node": "^10.9.1"
   }
 }
