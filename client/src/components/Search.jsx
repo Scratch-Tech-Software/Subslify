@@ -13,7 +13,7 @@ const Search = () => {
           placeholder='Search...'
           onChange={handleChange}
         />
-        <button type='submit'><i className='fa-search'></i></button>
+        <button type='submit' disabled={isLoading}><i className='fa-search'></i></button>
       </form>
     </div>
   );
