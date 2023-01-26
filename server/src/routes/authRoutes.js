@@ -29,10 +29,14 @@ router.route('/google/redirect').get(
   passport.authenticate(
     'google',
     {
-      successRedirect: '',
-      failureRedirect: '/register',
+      // successRedirect: process.env.AUTH_SUCCESS_ROUTE,
+      failureRedirect: process.env.AUTH_FAILURE_ROUTE
     }
-));
+),
+/* use authController to register user, and access / endpoint with a token*/ 
+(req, res) => {
+  res.redirect(process.env.AUTH_SUCCESS_ROUTE)
+});
 
 router.route('/getCurrentUser').get(authenticateUser, getCurrentUser);
 router.route('/logout').get(logout);
