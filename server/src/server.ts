@@ -29,6 +29,7 @@ passportConfig(passport);
 
 const app: Application = express();
 const port = process.env.PORT || 5002;
+
 //Sessions
 app.use(
   session({
@@ -56,6 +57,8 @@ app.get('/', (_req: Request, res: Response, _next: NextFunction) => {
 // Register the authRouter and subscriptionsRouter to their respective endpoints.
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/subscriptions', subscriptionsRouter);
+
+
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
