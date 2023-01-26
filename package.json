@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/Scratch-Tech-Software/Subslify#readme",
   "private": true,
+  "dependencies": {},
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.48.2",
     "@typescript-eslint/parser": "^5.48.2",

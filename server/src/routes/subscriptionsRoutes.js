@@ -3,12 +3,18 @@ import {
   createSubscription,
   updateSubscription,
   deleteSubscription,
-  getAllSubscriptions,
+  getSubscriptions,
+  getOneSubscription,
 } from '../controllers/subscriptionsController.js';
 
 const router = express.Router();
 
-router.route('/').post(createSubscription).get(getAllSubscriptions);
-router.route('/:id').patch(updateSubscription).delete(deleteSubscription);
+router.route('/').post(createSubscription).get(getSubscriptions);
+
+router
+  .route('/:id')
+  .get(getOneSubscription)
+  .patch(updateSubscription)
+  .delete(deleteSubscription);
 
 export default router;

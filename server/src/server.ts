@@ -1,7 +1,11 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import 'express-async-errors';
+import session from 'express-session';
+import passport from 'passport';
+import  passportConfig from './Config/google.js';
 import morgan from 'morgan';
+import authenticateUser from './middleware/auth.js';
 
 // db and authenticateUser
 import connectDB from './db/connect.js';
@@ -17,10 +21,27 @@ import errorHandlerMiddleware from './middleware/error-handler.js';
 // cookieParser
 import cookieParser from 'cookie-parser';
 
+//Load config
 dotenv.config({ path: '../.env' });
+
+//Passport config
+passportConfig(passport);
+// require('./Config/google');
 
 const app: Application = express();
 const port = process.env.PORT || 5002;
+//Sessions
+app.use(
+  session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false, //dont store anything until session happens
+  })
+);
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
@@ -35,10 +56,11 @@ app.get('/', (_req: Request, res: Response, _next: NextFunction) => {
 
 // Register the authRouter and subscriptionsRouter to their respective endpoints.
 app.use('/api/v1/auth', authRouter);
-app.use('/api/v1/subscriptions', subscriptionsRouter);
+app.use('/api/v1/subscriptions', authenticateUser, subscriptionsRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
+
 
 const start = async (): Promise<void> => {
   try {
